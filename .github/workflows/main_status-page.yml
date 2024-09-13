@@ -23,6 +23,7 @@ jobs:
           cache: 'npm'
 
       - name: npm install and build
+        working-directory: src/main/angular
         run: |
           npm install
           npm run build
