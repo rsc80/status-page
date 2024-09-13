@@ -12,11 +12,10 @@ import org.springframework.context.annotation.Bean;
 import java.time.LocalDate;
 
 @SpringBootApplication
-@EnableRedisDocumentRepositories(basePackages = "com.six_group.statuspageapp.domain.*")
+@EnableRedisDocumentRepositories(basePackages = "com.six_group.statuspageapp")
 public class StatusPageAppApplication {
 
-    final
-    ApplicationRepository applicationRepository;
+    final ApplicationRepository applicationRepository;
 
     public StatusPageAppApplication(ApplicationRepository applicationRepository) {
         this.applicationRepository = applicationRepository;
@@ -32,7 +31,6 @@ public class StatusPageAppApplication {
             applicationRepository.save(result.UBS());
         };
     }
-
     private static Result getApplications() {
         Application ZKB = Application.newInstance(
                 "1",
@@ -67,8 +65,7 @@ public class StatusPageAppApplication {
                 500,
                 500
         );
-        Result result = new Result(ZKB, CS, UBS);
-        return result;
+        return new Result(ZKB, CS, UBS);
     }
 
     private record Result(Application ZKB, Application CS, Application UBS) {
