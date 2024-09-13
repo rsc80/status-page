@@ -25,6 +25,7 @@ jobs:
       - name: npm install and build
         run: |
           cd ./src/main/angular
+          pwd
           npm install
           npm run build
 
