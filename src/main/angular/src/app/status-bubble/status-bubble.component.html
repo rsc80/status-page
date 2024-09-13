@@ -1,1 +1,5 @@
-<p>status: {{bubble.status}}</p>
+<div [ngSwitch]="bubble.status" [title]="bubble.i" class="transition hover:scale-125 cursor-pointer">
+  <div *ngSwitchCase="'SUCCESS'" class="rounded-full bg-green-600 w-3 h-10"></div>
+  <div *ngSwitchCase="'DEGRADED'" class="rounded-full bg-orange-500 w-3 h-10"></div>
+  <div *ngSwitchCase="'FAILURE'" class="rounded-full bg-red-950 w-3 h-10"></div>
+</div>

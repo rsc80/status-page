@@ -2,8 +2,8 @@
 
 <six-alert open type="warning">
   <six-icon slot="icon">warning</six-icon>
-  <div class="flex gap-3">
-    <app-status-bubble *ngFor="let bubble of bubbles" [bubble]="bubble"></app-status-bubble>
+  <div class="flex gap-1 justify-stretch">
+    <app-status-bubble class="flex-shrink w-full" *ngFor="let bubble of bubbles" [bubble]="bubble" (click)="onClickStatusBubble(bubble)"></app-status-bubble>
   </div>
 </six-alert>
 
