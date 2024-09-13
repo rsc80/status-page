@@ -1,9 +1,9 @@
 import {Component, Inject} from '@angular/core';
-import {Bubble} from "../status/status.component";
 import {StatusService} from "../services/status.service";
 import {ActivatedRoute} from "@angular/router";
 import {Observable, switchMap} from "rxjs";
 import {AsyncPipe, NgIf} from "@angular/common";
+import {StatusItem} from "../model";
 
 @Component({
   selector: 'app-status-details',
@@ -17,11 +17,11 @@ import {AsyncPipe, NgIf} from "@angular/common";
 })
 export class StatusDetailsComponent {
 
-  protected bubble$: Observable<Bubble>;
+  protected statusItem$: Observable<StatusItem>;
 
   constructor(@Inject(StatusService) private statusService: StatusService,
               @Inject(ActivatedRoute) private activatedRoute: ActivatedRoute) {
-    this.bubble$ = this.activatedRoute.params.pipe(switchMap(params => this.statusService.getStatus(params["id"])));
+    this.statusItem$ = this.activatedRoute.params.pipe(switchMap(params => this.statusService.getStatus(params["id"])));
   }
 
 }
