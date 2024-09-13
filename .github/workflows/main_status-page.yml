@@ -16,6 +16,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: NodeJS Setup
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: npm install and build
+        run: |
+          npm install
+          npm run build
+
       - name: Set up Java version
         uses: actions/setup-java@v1
         with:
