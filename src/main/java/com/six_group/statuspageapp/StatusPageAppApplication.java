@@ -1,78 +1,41 @@
 package com.six_group.statuspageapp;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.redis.om.spring.annotations.EnableRedisDocumentRepositories;
-import com.six_group.statuspageapp.api.dto.StatusIndicator;
-import com.six_group.statuspageapp.domain.Application;
-import com.six_group.statuspageapp.persistence.ApplicationRepository;
+import com.six_group.statuspageapp.domain.participant.Participant;
+import com.six_group.statuspageapp.persistence.ParticipantRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.ClassPathResource;
 
-import java.time.LocalDate;
+import java.io.InputStream;
+import java.util.List;
 
 @SpringBootApplication
 @EnableRedisDocumentRepositories(basePackages = "com.six_group.statuspageapp")
 public class StatusPageAppApplication {
 
-    final ApplicationRepository applicationRepository;
+    final ParticipantRepository participantRepository;
 
-    public StatusPageAppApplication(ApplicationRepository applicationRepository) {
-        this.applicationRepository = applicationRepository;
+    public StatusPageAppApplication(ParticipantRepository participantRepository) {
+        this.participantRepository = participantRepository;
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(StatusPageAppApplication.class, args);
     }
 
     @Bean
     CommandLineRunner loadTestData() {
         return _ -> {
-            applicationRepository.deleteAll();
-            Result result = getApplications();
-            applicationRepository.save(result.ZKB());
-            applicationRepository.save(result.CS());
-            applicationRepository.save(result.UBS());
+            ObjectMapper objectMapper = new ObjectMapper();
+            InputStream inputStream = new ClassPathResource("participant-test-data.json").getInputStream();
+            List<Participant> participantList = objectMapper.readValue(inputStream, new TypeReference<>() {});
+            this.participantRepository.saveAll(participantList);
         };
     }
-    private static Result getApplications() {
-        Application ZKB = Application.newInstance(
-                "1",
-                "ZKB",
-                LocalDate.parse("2024-09-01"),
-                13,
-                StatusIndicator.SUCCESS,
-                "200",
-                1000,
-                2,
-                1
-        );
-        Application CS = Application.newInstance(
-                "2",
-                "CS",
-                LocalDate.parse("2024-09-01"),
-                13,
-                StatusIndicator.WARNING,
-                "400",
-                1000,
-                2,
-                1
-        );
-        Application UBS = Application.newInstance(
-                "3",
-                "UBS",
-                LocalDate.parse("2024-09-01"),
-                13,
-                StatusIndicator.DANGER,
-                "600",
-                1000,
-                500,
-                500
-        );
-        return new Result(ZKB, CS, UBS);
-    }
 
-    private record Result(Application ZKB, Application CS, Application UBS) {
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(StatusPageAppApplication.class, args);
-
-    }
 }
