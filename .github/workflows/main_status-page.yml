@@ -18,10 +18,10 @@ jobs:
 
       - name: NodeJS Setup
         uses: actions/setup-node@v3
-        working-directory: ./src/main/angular
         with:
           node-version: 20
           cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
       - name: npm install and build
         working-directory: ./src/main/angular
