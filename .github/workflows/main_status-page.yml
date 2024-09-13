@@ -24,9 +24,9 @@ jobs:
 
       - name: npm install and build
         run: |
+          cd ./src/main/angular
           npm install
           npm run build
-        working-directory: ./src/main/angular
 
       - name: Set up Java version
         uses: actions/setup-java@v1
