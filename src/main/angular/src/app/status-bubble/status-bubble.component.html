@@ -1,4 +1,4 @@
-<div [ngSwitch]="statusItem.status" [title]="statusItem.id"
+<div [ngSwitch]="statusItem.status" [title]="statusItem.id + ': ' +statusItem.rangeStart"
      class="transition hover:scale-125 cursor-pointer flex-1 flex">
   <div *ngSwitchCase="'SUCCESS'" class="flex-1 rounded-full bg-green-600 h-10"></div>
   <div *ngSwitchCase="'DEGRADED'" class="flex-1 rounded-full bg-orange-500 h-10"></div>

@@ -1,3 +1,6 @@
-<div *ngIf="statusItem$|async as statusItem">
-  <h1>{{ statusItem.id }}: {{ statusItem.status }}</h1>
+<div class="container xl:px-52 mx-auto">
+  <div *ngIf="statusItem$|async as statusItem">
+    <h1 class="text-3xl">{{ statusItem.id }}: {{ statusItem.status }}</h1>
+    <app-status-row [statusRow]="statusRow"></app-status-row>
+  </div>
 </div>

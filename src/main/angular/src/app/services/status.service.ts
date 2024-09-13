@@ -11,7 +11,7 @@ export class StatusService {
   }
 
   getStatus(id: string): Observable<StatusItem> {
-    return of({id, status: "SUCCESS"});
+    return of({id, status: "SUCCESS", rangeStart: new Date()});
   }
 
 }
