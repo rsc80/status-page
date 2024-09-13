@@ -16,21 +16,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: NodeJS Setup
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-          cache-dependency-path: 'src/main/angular/package-lock.json'
-
-      - run: npm ci
-        working-directory: ./src/main/angular
-      - run: npm i -g @angular/cli
-        working-directory: ./src/main/angular
-      - run: npm i @angular-devkit/build-angular @angular/compiler-cli typescript --save-prod
-        working-directory: ./src/main/angular
-      - run: ng build
-        working-directory: ./src/main/angular
+      #      - name: NodeJS Setup
+      #        uses: actions/setup-node@v4
+      #        with:
+      #          node-version: 22.5.x
+      #          cache: 'npm'
+      #          cache-dependency-path: 'src/main/angular/package-lock.json'
+      #
+      #      - run: npm ci
+      #        working-directory: ./src/main/angular
+      #      - run: npm i -g @angular/cli
+      #        working-directory: ./src/main/angular
+      #      - run: npm i @angular-devkit/build-angular @angular/compiler-cli typescript --save-prod
+      #        working-directory: ./src/main/angular
+      #      - run: ng build
+      #        working-directory: ./src/main/angular
 
       - uses: actions/setup-java@v4
         with:
