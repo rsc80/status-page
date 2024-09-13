@@ -3,11 +3,12 @@ import {UiLibraryAngularModule} from "@six-group/ui-library-angular";
 import {StatusBubbleComponent} from "../status-bubble/status-bubble.component";
 import {NgForOf} from "@angular/common";
 import {Router} from "@angular/router";
+import {StatusRowComponent} from "../status-row/status-row.component";
 
 @Component({
   selector: 'app-status',
   standalone: true,
-  imports: [UiLibraryAngularModule, StatusBubbleComponent, NgForOf],
+  imports: [UiLibraryAngularModule, StatusBubbleComponent, NgForOf, StatusRowComponent],
   templateUrl: './status.component.html',
   styleUrl: './status.component.scss'
 })

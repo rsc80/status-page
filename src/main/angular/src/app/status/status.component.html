@@ -1,15 +1,14 @@
-<h1>bLink Status</h1>
+<div class="container xl:px-52 mx-auto">
+  <h1 class="text-3xl mt-10">bLink Status</h1>
 
-<six-alert open type="warning">
-  <six-icon slot="icon">warning</six-icon>
-  <div class="flex gap-1 justify-stretch">
-    <app-status-bubble class="flex-shrink w-full" *ngFor="let bubble of bubbles" [bubble]="bubble" (click)="onClickStatusBubble(bubble)"></app-status-bubble>
+  <app-status-row (bubbleClick)="onClickStatusBubble($event)" [bubbles]="bubbles"></app-status-row>
+
+  <h1 class="text-3xl mt-10">External Services</h1>
+
+  <div class="p-5 border rounded-lg flex flex-col gap-3">
+    <h2 class="text-2xl mt-3">UBS</h2>
+    <app-status-row (bubbleClick)="onClickStatusBubble($event)" [bubbles]="bubbles"></app-status-row>
+    <h2 class="text-2xl mt-3">ZKB</h2>
+    <app-status-row (bubbleClick)="onClickStatusBubble($event)" [bubbles]="bubbles"></app-status-row>
   </div>
-</six-alert>
-
-<h1>External Services</h1>
-
-<six-alert open type="warning">
-  <six-icon slot="icon">warning</six-icon>
-  O-oh...
-</six-alert>
+</div>
