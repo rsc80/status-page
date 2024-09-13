@@ -1,7 +1,7 @@
-<h1>Events</h1>
+<h1 class="text-3xl">Events</h1>
 
 <six-card>
-  <div *ngFor="let event of events" [routerLink]="event.id" class="event">
+  <div *ngFor="let event of events$ | async" [routerLink]="event.id" class="grid grid-cols-5 gap-2 p-2 cursor-pointer hover:bg-gray-100">
     <span>{{event.name}}</span>
     <span>{{event.type}}</span>
     <span>{{event.startDate | date}}</span>

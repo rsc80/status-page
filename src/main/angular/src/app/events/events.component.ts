@@ -1,7 +1,9 @@
 import {Component} from '@angular/core';
 import {UiLibraryAngularModule} from "@six-group/ui-library-angular";
-import {DatePipe, NgForOf} from "@angular/common";
+import {AsyncPipe, DatePipe, NgForOf} from "@angular/common";
 import {RouterLink} from "@angular/router";
+import {Observable} from 'rxjs';
+import {EventService} from "../services/event.service";
 
 @Component({
   selector: 'app-events',
@@ -10,37 +12,33 @@ import {RouterLink} from "@angular/router";
     UiLibraryAngularModule,
     NgForOf,
     DatePipe,
-    RouterLink
+    RouterLink,
+    AsyncPipe
   ],
   templateUrl: './events.component.html',
   styleUrl: './events.component.scss'
 })
 export class EventsComponent {
-  events: Event[] = [
-    {
-      id: "1",
-      name: "Oracle Patch",
-      type: "Maintenance",
-      status: "Scheduled",
-      endDate: new Date(),
-      startDate: new Date(),
-    },
-    {
-      id: "2",
-      name: "Slow NWP API Calls",
-      type: "Incident",
-      status: "Ongoing",
-      endDate: new Date(),
-      startDate: new Date(),
-    }
-  ];
+  events$: Observable<Event[]>;
+
+  constructor(private eventService: EventService) {
+    this.events$ = this.eventService.getEvents();
+  }
 }
 
 export interface Event {
   id: string;
   name: string;
+  description?: string;
   type: "Maintenance" | "Incident";
   status: "Scheduled" | "Ongoing" | "Done";
   startDate: Date;
   endDate: Date;
+  affectedServices?: Service[];
+}
+
+export interface Service {
+  id: string;
+  name: string;
+  status: "SUCCESS" | "DEGRADED" | "FAILURE";
 }
