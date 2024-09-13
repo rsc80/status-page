@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {RouterLink, RouterOutlet} from '@angular/router';
 import {UiLibraryAngularModule} from "@six-group/ui-library-angular";
 import {StatusComponent} from "./status/status.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UiLibraryAngularModule, StatusComponent],
+  imports: [RouterOutlet, UiLibraryAngularModule, StatusComponent, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
