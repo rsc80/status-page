@@ -1,3 +1,11 @@
 <h1>Events</h1>
 
-nice
+<six-card>
+  <div *ngFor="let event of events" [routerLink]="event.id" class="event">
+    <span>{{event.name}}</span>
+    <span>{{event.type}}</span>
+    <span>{{event.startDate | date}}</span>
+    <span>{{event.endDate | date}}</span>
+    <span>{{event.status}}</span>
+  </div>
+</six-card>
