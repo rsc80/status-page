@@ -1,6 +1,6 @@
 <div class="p-10 border-teal-700 bg-gray-200 rounded">
   <div class="flex gap-1">
-    <app-status-bubble (click)="onClickStatusBubble(bubble)" *ngFor="let bubble of bubbles" [bubble]="bubble"
+    <app-status-bubble (click)="onClickStatusBubble(bubble)" *ngFor="let bubble of bubbles" [statusItem]="bubble"
                        class="flex-1"></app-status-bubble>
   </div>
 </div>

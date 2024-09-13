@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {Bubble} from "../status/status.component";
 import {NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
+import {StatusItem} from "../model";
 
 @Component({
   selector: 'app-status-bubble',
@@ -14,6 +14,6 @@ import {NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
   styleUrl: './status-bubble.component.scss'
 })
 export class StatusBubbleComponent {
-  @Input() bubble!: Bubble;
+  @Input() statusItem!: StatusItem;
 
 }

@@ -1,7 +1,8 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {StatusBubbleComponent} from "../status-bubble/status-bubble.component";
-import {Bubble} from "../status/status.component";
+
+import {StatusItem} from "../model";
 
 @Component({
   selector: 'app-status-row',
@@ -16,11 +17,11 @@ import {Bubble} from "../status/status.component";
 export class StatusRowComponent {
 
   @Output()
-  bubbleClick = new EventEmitter<Bubble>();
+  bubbleClick = new EventEmitter<StatusItem>();
   @Input()
-  bubbles!: Bubble[];
+  bubbles!: StatusItem[];
 
-  onClickStatusBubble(bubble: Bubble) {
+  onClickStatusBubble(bubble: StatusItem) {
     this.bubbleClick.emit(bubble);
   }
 }

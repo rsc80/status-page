@@ -4,6 +4,7 @@ import {StatusBubbleComponent} from "../status-bubble/status-bubble.component";
 import {NgForOf} from "@angular/common";
 import {Router} from "@angular/router";
 import {StatusRowComponent} from "../status-row/status-row.component";
+import {StatusItem} from "../model";
 
 @Component({
   selector: 'app-status',
@@ -13,24 +14,20 @@ import {StatusRowComponent} from "../status-row/status-row.component";
   styleUrl: './status.component.scss'
 })
 export class StatusComponent implements OnInit {
-  bubbles: Bubble[] = [];
+  statusItems: StatusItem[] = [];
 
   constructor(@Inject(Router) private router: Router) {
   }
 
   ngOnInit(): void {
     for (let i = 0; i <= 60; i++) {
-      this.bubbles.push({id: '' + i, status: "SUCCESS"});
+      this.statusItems.push({id: '' + i, status: "SUCCESS"});
     }
   }
 
-  onClickStatusBubble(bubble: Bubble) {
+  onClickStatusBubble(bubble: StatusItem) {
     // noinspection JSIgnoredPromiseFromCall
     this.router.navigate(["status", bubble.id]);
   }
 }
 
-export interface Bubble {
-  id: string,
-  status: "SUCCESS" | "DEGRADED" | "FAILURE";
-}

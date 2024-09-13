@@ -1,0 +1,41 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy JAR app to Azure Web App - status-page
+
+on:
+  push:
+    branches:
+      - 'features/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      #      - name: NodeJS Setup
+      #        uses: actions/setup-node@v4
+      #        with:
+      #          node-version: 22.5.x
+      #          cache: 'npm'
+      #          cache-dependency-path: 'src/main/angular/package-lock.json'
+      #
+      #      - run: npm ci
+      #        working-directory: ./src/main/angular
+      #      - run: npm i -g @angular/cli
+      #        working-directory: ./src/main/angular
+      #      - run: npm i @angular-devkit/build-angular @angular/compiler-cli typescript --save-prod
+      #        working-directory: ./src/main/angular
+      #      - run: ng build
+      #        working-directory: ./src/main/angular
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '21'
+          cache: 'maven'
+
+      - run: mvn clean install
