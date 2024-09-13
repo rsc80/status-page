@@ -1,0 +1,11 @@
+{
+  "id": "2",
+  "name": "CS",
+  "localDate": "2024-01-02",
+  "hour": 14,
+  "latency": "400",
+  "statusIndicator": "warning",
+  "amount200": 2000,
+  "amount400": 800,
+  "amount500": 500
+}

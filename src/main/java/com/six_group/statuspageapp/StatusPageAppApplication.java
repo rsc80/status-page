@@ -8,6 +8,6 @@ public class StatusPageAppApplication {
 
   public static void main(String[] args) {
     SpringApplication.run(StatusPageAppApplication.class, args);
-  }
 
+  }
 }
