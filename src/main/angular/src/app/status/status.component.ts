@@ -19,17 +19,17 @@ export class StatusComponent implements OnInit {
 
   ngOnInit(): void {
     for (let i = 0; i <= 60; i++) {
-      this.bubbles.push({i,status: "SUCCESS"});
+      this.bubbles.push({id: '' + i, status: "SUCCESS"});
     }
   }
 
-  onClickStatusBubble(bubble:Bubble) {
+  onClickStatusBubble(bubble: Bubble) {
     // noinspection JSIgnoredPromiseFromCall
-    this.router.navigate(["status", bubble.i]);
+    this.router.navigate(["status", bubble.id]);
   }
 }
 
 export interface Bubble {
-  i:number,
+  id: string,
   status: "SUCCESS" | "DEGRADED" | "FAILURE";
 }
