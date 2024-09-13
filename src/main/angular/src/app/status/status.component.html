@@ -2,7 +2,9 @@
 
 <six-alert open type="warning">
   <six-icon slot="icon">warning</six-icon>
-  O-oh...
+  <div class="flex gap-3">
+    <app-status-bubble *ngFor="let bubble of bubbles" [bubble]="bubble"></app-status-bubble>
+  </div>
 </six-alert>
 
 <h1>External Services</h1>
