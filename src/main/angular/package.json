@@ -2,7 +2,7 @@
   "name": "status-page",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
+    "ng": "node node_modules/@angular/cli/bin/ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.2.1",
-    "@angular/cli": "^18.2.1",
+    "@angular/cli": "^18.2.4",
     "@angular/compiler-cli": "^18.2.0",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.2.0",
