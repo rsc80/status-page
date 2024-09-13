@@ -22,11 +22,11 @@ public class ApplicationController {
 
     @GetMapping("/applications")
     public List<ApplicationDto> getAllApplications() {
-        return null;
+        return this.applicationService.getAllApplications();
     }
 
     @GetMapping("/applications/{id}")
     public ApplicationDto getApplicationById(@PathVariable String id) {
-        return null;
+        return this.applicationService.getApplicationById(id);
     }
 }

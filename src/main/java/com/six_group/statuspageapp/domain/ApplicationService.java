@@ -17,14 +17,11 @@ public class ApplicationService {
     }
 
     public List<ApplicationDto> getAllApplications() {
-        var test = applicationRepository.findAll();
-        return null;
+         return applicationRepository.findAll().stream().map(a -> a.toDto(a)).toList();
     }
 
     public ApplicationDto getApplicationById(String id) {
-
-        this.applicationRepository.findById(id).orElseThrow(RuntimeException::new);
-        return null;
+        return this.applicationRepository.findById(id).map(a -> a.toDto(a)).orElseThrow(RuntimeException::new);
     }
 
 
