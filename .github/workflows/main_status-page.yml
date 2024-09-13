@@ -18,14 +18,14 @@ jobs:
 
       - name: NodeJS Setup
         uses: actions/setup-node@v3
+        working-directory: ./src/main/angular
         with:
           node-version: 20
           cache: 'npm'
 
       - name: npm install and build
+        working-directory: ./src/main/angular
         run: |
-          cd ./src/main/angular
-          pwd
           npm install
           npm run build
 
