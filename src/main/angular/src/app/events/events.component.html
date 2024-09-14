@@ -4,17 +4,17 @@
     <h1 class="text-3xl mt-10">Events</h1>
 
     <div class="flex flex-row gap-4 mt-4">
-      <six-badge [type]="filteredEventType$.value === 'Maintenance' ? 'info' : 'primary'"
-                 (click)="filterEventType('Maintenance')"
+      <six-badge [type]="filteredEventType$.value === 'MAINTENANCE' ? 'info' : 'primary'"
+                 (click)="filterEventType('MAINTENANCE')"
                  pill
                  class="cursor-pointer">
-        <app-event-type-badge type="Maintenance" class="p-1"></app-event-type-badge>
+        <app-event-type-badge type="MAINTENANCE" class="p-1"></app-event-type-badge>
       </six-badge>
-      <six-badge [type]="filteredEventType$.value === 'Incident' ? 'info' : 'primary'"
-                 (click)="filterEventType('Incident')"
+      <six-badge [type]="filteredEventType$.value === 'INCIDENT' ? 'info' : 'primary'"
+                 (click)="filterEventType('INCIDENT')"
                  pill
                  class="cursor-pointer">
-        <app-event-type-badge type="Incident" class="p-1"></app-event-type-badge>
+        <app-event-type-badge type="INCIDENT" class="p-1"></app-event-type-badge>
       </six-badge>
     </div>
 

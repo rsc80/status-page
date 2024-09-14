@@ -63,5 +63,5 @@ export interface Service {
   status: "SUCCESS" | "DEGRADED" | "FAILURE";
 }
 
-export type EventStatus = "Scheduled" | "Ongoing" | "Done";
-export type EventType = "Maintenance" | "Incident";
+export type EventStatus = "SCHEDULED" | "ONGOING" | "FINISHED";
+export type EventType = "MAINTENANCE" | "INCIDENT";
