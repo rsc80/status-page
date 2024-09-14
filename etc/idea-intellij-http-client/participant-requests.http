@@ -18,4 +18,14 @@ Content-Type: application/json
 }
 
 ###
+POST {{base_url}}/api/participants/2/2024-09-14/11:00/ais/v3
+Content-Type: application/json
+
+{
+  "successCount": 222,
+  "clientErrorCount": 0,
+  "serverErrorCount": 0
+}
+
+###
 GET http://{{base_url}}/api/participants/1/2024-09-14
