@@ -1,18 +1,30 @@
 <div class="container xl:px-52 mx-auto">
-  <h1 class="text-3xl mt-10">bLink Status</h1>
-  <six-alert open type="warning">
-    <six-icon>warning</six-icon>
-    O-oh...
-  </six-alert>
-  <app-status-row (bubbleClick)="onClickStatusBubble($event)" *ngFor="let service of internalServices$ | async"
-                  [statusRow]="service"></app-status-row>
-
-  <h1 class="text-3xl mt-10">External Services</h1>
-
-  <div class="p-5 border rounded-lg flex flex-col gap-3">
-    <div *ngFor="let statusRow of externalServices$ | async">
-      <h2 class="text-2xl mt-3">{{ statusRow.service }}</h2>
-      <app-status-row (bubbleClick)="onClickStatusBubble($event)" [statusRow]="statusRow"></app-status-row>
+  <div *ngIf="internalServices$ | async as internalServices; else Loading">
+    <div *ngFor="let statusRow of internalServices">
+      <h1 class="text-3xl mt-10">{{ statusRow.service }}</h1>
+      <six-alert open type="warning">
+        <six-icon>warning</six-icon>
+        O-oh...
+      </six-alert>
+      <app-status-row (bubbleClick)="onClickStatusBubble($event)"
+                      [statusRow]="statusRow"></app-status-row>
     </div>
   </div>
+
+
+  <div *ngIf="externalServices$ | async as externalServices;">
+    <h1 class="text-3xl mt-10">External Services</h1>
+    <div class="p-5 border rounded-lg flex flex-col gap-3">
+      <div *ngFor="let statusRow of externalServices">
+        <h2 class="text-2xl mt-3">{{ statusRow.service }}</h2>
+        <app-status-row (bubbleClick)="onClickStatusBubble($event)" [statusRow]="statusRow"></app-status-row>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #Loading>
+    <div class="flex justify-center mt-28">
+      <six-spinner class="text-8xl"></six-spinner>
+    </div>
+  </ng-template>
 </div>
