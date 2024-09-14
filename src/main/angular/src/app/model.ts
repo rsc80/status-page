@@ -32,6 +32,11 @@ export interface Service {
   hours: { [key: string]: HourMetrics };
 }
 
+export interface ParticipantStatusDetails {
+  name: string;
+  dayData: DailyData
+}
+
 export interface DailyData {
   date: string;
   statusIndicator: "WARNING" | "SUCCESS";

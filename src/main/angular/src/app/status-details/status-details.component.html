@@ -1,8 +1,9 @@
 <div class="container xl:px-52 mx-auto">
-  <div *ngIf="dailyData$|async as participant; else Loading">
-    <h1 class="text-4xl">?</h1>
+  <div *ngIf="participantStatusDetails$|async as participantStatusDetails; else Loading">
+    <h1 class="text-4xl">{{ participantStatusDetails.name }}</h1>
   </div>
-  <app-charts [containers]="(chartsContainers$|async)||[]" [dailyData]="dailyData$|async"></app-charts>
+  <app-charts [containers]="(chartsContainers$|async)||[]"
+              [participantStatusDetails]="participantStatusDetails$|async"></app-charts>
 
   <ng-template #Loading>
     <div class="flex justify-center mt-28">

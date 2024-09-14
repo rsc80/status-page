@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, OnDestroy} from '@angular/core';
 import {JsonPipe, NgForOf} from "@angular/common";
 import {Chart} from "chart.js/auto";
-import {DailyData, Service} from "../model";
+import {ParticipantStatusDetails, Service} from "../model";
 
 @Component({
   selector: 'app-charts',
@@ -16,7 +16,7 @@ import {DailyData, Service} from "../model";
 export class ChartsComponent implements OnChanges, OnDestroy {
 
   @Input() containers!: string[];
-  @Input() dailyData!: DailyData | null;
+  @Input() participantStatusDetails!: ParticipantStatusDetails | null;
   protected services: Service[] = [];
   protected charts: { [key: string]: Chart } = {};
 
@@ -33,8 +33,8 @@ export class ChartsComponent implements OnChanges, OnDestroy {
   }
 
   ngOnChanges(): void {
-    if (this.dailyData) {
-      this.services = this.dailyData && this.dailyData.services || [];
+    if (this.participantStatusDetails) {
+      this.services = this.participantStatusDetails && this.participantStatusDetails.dayData.services || [];
     }
   }
 
