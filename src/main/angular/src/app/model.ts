@@ -11,7 +11,7 @@ export interface StatusLine {
 }
 
 export interface StatusRow {
-  service: string;
+  participantName: string;
   participantId: string,
   statusLine: StatusLine,
   items: StatusItem[];

@@ -48,7 +48,7 @@ export class StatusComponent {
     return (p: Participant) => {
       return {
         participantId: p.id,
-        service: p.name,
+        participantName: p.name,
         statusLine: p.statusLine,
         items: [...items.map(item => this.toStatusItems(item, p))],
         resolutionMinutes: 60

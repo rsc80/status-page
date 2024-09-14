@@ -45,18 +45,28 @@ export class ChartsComponent implements OnChanges, OnDestroy {
     function extract(service: Service, hour: string) {
       let hourData = service.hours[hour];
       return {
-        hourData: hourData,
-        total: hourData.successCount + hourData.clientErrorCount + hourData.serverErrorCount
+        hourData: hourData || {successCount: 0, clientErrorCount: 0, serverErrorCount: 0},
+        total: hourData && (hourData.successCount + hourData.clientErrorCount + hourData.serverErrorCount) || 0
       };
     }
 
-    let labels = Object.keys(service.hours).sort((a, b) => a < b ? -1 : 1);
+    let labels = [];
+    for (let h = 0; h < 24; h++) {
+      labels.push((h + '').padStart(2, '0') + ":00");
+    }
+    // let labels = Object.keys(service.hours).sort((a, b) => a < b ? -1 : 1);
     let hoursSuccess = labels.map(hour => {
       const hourForChart = extract(service, hour);
+      if (hourForChart.total === 0) {
+        return null;
+      }
       return 100 * (hourForChart.hourData.successCount + hourForChart.hourData.clientErrorCount) / hourForChart.total;
     });
     let hoursFailures = labels.map(hour => {
       const hourForChart = extract(service, hour);
+      if (hourForChart.total === 0) {
+        return null;
+      }
       return 100 * (hourForChart.hourData.serverErrorCount) / hourForChart.total;
     });
 
