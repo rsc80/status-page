@@ -5,8 +5,8 @@ import {map, Observable, switchMap} from "rxjs";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {ParticipantStatusDetails} from "../model";
 import {StatusRowComponent} from "../status-row/status-row.component";
-import {ChartsComponent} from "../charts/charts.component";
 import {UiLibraryAngularModule} from "@six-group/ui-library-angular";
+import {ChartsComponent} from "../charts/charts.component";
 
 @Component({
   selector: 'app-status-details',
@@ -32,7 +32,7 @@ export class StatusDetailsComponent {
               @Inject(ActivatedRoute) private activatedRoute: ActivatedRoute) {
     this.participantStatusDetails$ = this.activatedRoute.params.pipe(switchMap(params => this.statusService.getStatus(params["participantId"], params["day"])));
     this.chartsContainers$ = this.participantStatusDetails$.pipe(
-      map(p => p.dayData.services),
+      map(p => p.dayData && p.dayData.services || []),
       map(s => s.map(s => "chart-" + s.serviceName))
     );
   }

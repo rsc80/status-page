@@ -34,7 +34,7 @@ export class ChartsComponent implements OnChanges, OnDestroy {
 
   ngOnChanges(): void {
     if (this.participantStatusDetails) {
-      this.services = this.participantStatusDetails && this.participantStatusDetails.dayData.services || [];
+      this.services = this.participantStatusDetails && this.participantStatusDetails.dayData && this.participantStatusDetails.dayData.services || [];
     }
   }
 
