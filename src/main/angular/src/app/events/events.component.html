@@ -22,7 +22,7 @@
       <div *ngFor="let event of events"
            [routerLink]="event.id"
            class="hidden md:grid grid-cols-6 gap-4 p-2 cursor-pointer hover:bg-gray-100">
-        <span class="font-bold col-span-2">{{event.name}}</span>
+        <span class="font-bold col-span-2">{{event.title}}</span>
         <app-event-type-badge [type]="event.eventType"></app-event-type-badge>
         <span>{{event.start | date}}</span>
         <span>{{event.end | date}}</span>
@@ -33,7 +33,7 @@
            [routerLink]="event.id"
            class="md:hidden flex flex-col p-4 cursor-pointer hover:bg-gray-100">
         <div class="flex flex-row gap-2">
-          <span class="flex-grow font-bold">{{event.name}}</span>
+          <span class="flex-grow font-bold">{{event.title}}</span>
           <app-event-status-pill [status]="event.eventStatus"></app-event-status-pill>
         </div>
         <app-event-type-badge [type]="event.eventType"></app-event-type-badge>

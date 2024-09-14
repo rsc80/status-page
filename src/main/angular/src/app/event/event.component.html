@@ -3,7 +3,7 @@
 
     <div class="flex flex-col sm:flex-row justify-between sm:items-center">
       <div>
-        <h1 class="text-3xl mt-0 mb-2 sm:mb-0">{{event.name}}</h1>
+        <h1 class="text-3xl mt-0 mb-2 sm:mb-0">{{event.title}}</h1>
 
         <app-event-type-badge [type]="event.eventType"></app-event-type-badge>
       </div>
@@ -26,11 +26,12 @@
     <h2 class="text-xl mt-16 mb-2">Affected Services</h2>
     <six-card *ngFor="let service of event.affectedServices" class="flex justify-between items-center">
       <span>{{service.name}}</span>
-      <six-tooltip [content]="service.status">
-        <ng-container [ngSwitch]="service.status">
-          <div *ngSwitchCase="'SUCCESS'" class="flex-grow-0 rounded-full bg-green-600 h-4 w-4"></div>
+      <six-tooltip [content]="service.serviceStatus">
+        <ng-container [ngSwitch]="service.serviceStatus">
+          <div *ngSwitchCase="'RUNNING_NORMALLY'" class="flex-grow-0 rounded-full bg-green-600 h-4 w-4"></div>
           <div *ngSwitchCase="'DEGRADED'" class="flex-grow-0 rounded-full bg-orange-500 h-4 w-4"></div>
           <div *ngSwitchCase="'FAILURE'" class="flex-grow-0 rounded-full bg-red-950 h-4 w-4"></div>
+          <div *ngSwitchCase="'NO_DATA'" class="flex-grow-0 rounded-full bg-gray-600 h-4 w-4"></div>
         </ng-container>
       </six-tooltip>
     </six-card>

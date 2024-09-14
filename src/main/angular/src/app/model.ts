@@ -52,7 +52,7 @@ export interface Participant {
 
 export interface Event {
     id: string;
-    name: string;
+    title: string;
     description?: string;
     participant?: string;
     eventType: EventType;
@@ -65,7 +65,7 @@ export interface Event {
 export interface AffectedService {
     id: string;
     name: string;
-    status: "SUCCESS" | "DEGRADED" | "FAILURE";
+    serviceStatus: "RUNNING_NORMALLY" | "DEGRADED" | "FAILURE" | "NO_DATA";
 }
 
 export type EventStatus = "SCHEDULED" | "ONGOING" | "FINISHED";
