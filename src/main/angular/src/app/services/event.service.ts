@@ -22,10 +22,10 @@ export class EventService {
       },
       {
         id: "2",
-        name: "Slow NWP API Calls",
+        name: "Slow NWP API Calls that lead to significant performance impacts",
         type: "Incident",
         status: "Ongoing",
-        endDate: new Date(),
+        endDate: null,
         startDate: new Date(),
       }
     ]);
@@ -35,7 +35,7 @@ export class EventService {
     return of(
       {
         id: id,
-        name: "Slow NWP API Calls",
+        name: "Slow NWP API Calls that lead to significant performance impacts",
         description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
         type: "Maintenance",
         status: "Ongoing",

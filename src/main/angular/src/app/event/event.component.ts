@@ -5,6 +5,8 @@ import {Observable, switchMap} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {EventService} from "../services/event.service";
 import {UiLibraryAngularModule} from "@six-group/ui-library-angular";
+import {EventStatusPillComponent} from "../event-status-pill/event-status-pill.component";
+import {EventTypeBadgeComponent} from "../event-type-badge/event-type-badge.component";
 
 @Component({
   selector: 'app-event',
@@ -17,7 +19,9 @@ import {UiLibraryAngularModule} from "@six-group/ui-library-angular";
     NgSwitchCase,
     NgSwitch,
     UiLibraryAngularModule,
-    NgForOf
+    NgForOf,
+    EventStatusPillComponent,
+    EventTypeBadgeComponent
   ],
   templateUrl: './event.component.html',
   styleUrl: './event.component.scss'

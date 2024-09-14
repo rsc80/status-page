@@ -1,0 +1,5 @@
+<div [ngSwitch]="status">
+  <six-badge *ngSwitchCase="'Done'" type="success" pill>{{status}}</six-badge>
+  <six-badge *ngSwitchCase="'Ongoing'" type="warning" pill>{{status}}</six-badge>
+  <six-badge *ngSwitchCase="'Scheduled'" type="primary" pill>{{status}}</six-badge>
+</div>

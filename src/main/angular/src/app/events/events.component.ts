@@ -4,6 +4,8 @@ import {AsyncPipe, DatePipe, NgForOf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {Observable} from 'rxjs';
 import {EventService} from "../services/event.service";
+import {EventStatusPillComponent} from "../event-status-pill/event-status-pill.component";
+import {EventTypeBadgeComponent} from "../event-type-badge/event-type-badge.component";
 
 @Component({
   selector: 'app-events',
@@ -13,7 +15,9 @@ import {EventService} from "../services/event.service";
     NgForOf,
     DatePipe,
     RouterLink,
-    AsyncPipe
+    AsyncPipe,
+    EventStatusPillComponent,
+    EventTypeBadgeComponent
   ],
   templateUrl: './events.component.html',
   styleUrl: './events.component.scss'
@@ -30,10 +34,10 @@ export interface Event {
   id: string;
   name: string;
   description?: string;
-  type: "Maintenance" | "Incident";
-  status: "Scheduled" | "Ongoing" | "Done";
+  type: EventType;
+  status: EventStatus;
   startDate: Date;
-  endDate: Date;
+  endDate: Date | null;
   affectedServices?: Service[];
 }
 
@@ -42,3 +46,6 @@ export interface Service {
   name: string;
   status: "SUCCESS" | "DEGRADED" | "FAILURE";
 }
+
+export type EventStatus = "Scheduled" | "Ongoing" | "Done";
+export type EventType = "Maintenance" | "Incident";

@@ -1,0 +1,10 @@
+<div [ngSwitch]="type" class="flex items-center gap-2">
+  <ng-container *ngSwitchCase="'Maintenance'">
+    <div class="flex-grow-0 flex-shrink-0 rounded-full bg-blue-600 h-2 w-2 mt-[2px]"></div>
+    <span>Maintenance</span>
+  </ng-container>
+  <ng-container *ngSwitchCase="'Incident'">
+    <div class="flex-grow-0 rounded-full bg-red-600 h-2 w-2 mt-[2px]"></div>
+    <span>Incident</span>
+  </ng-container>
+</div>

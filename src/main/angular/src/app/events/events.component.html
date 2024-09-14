@@ -1,11 +1,43 @@
-<h1 class="text-3xl">Events</h1>
+<div class="container xl:px-52 mx-auto">
+  <h1 class="text-3xl mt-10">Events</h1>
 
-<six-card>
-  <div *ngFor="let event of events$ | async" [routerLink]="event.id" class="grid grid-cols-5 gap-2 p-2 cursor-pointer hover:bg-gray-100">
-    <span>{{event.name}}</span>
-    <span>{{event.type}}</span>
-    <span>{{event.startDate | date}}</span>
-    <span>{{event.endDate | date}}</span>
-    <span>{{event.status}}</span>
-  </div>
-</six-card>
+  <six-card class="w-full p-0 mt-4">
+    <div *ngFor="let event of events$ | async"
+         [routerLink]="event.id"
+         class="hidden md:grid grid-cols-6 gap-4 p-2 cursor-pointer hover:bg-gray-100">
+      <span class="font-bold col-span-2">{{event.name}}</span>
+      <app-event-type-badge [type]="event.type"></app-event-type-badge>
+      <span>{{event.startDate | date}}</span>
+      <span>{{event.endDate | date}}</span>
+      <app-event-status-pill [status]="event.status" class="ml-auto"></app-event-status-pill>
+    </div>
+    <div *ngFor="let event of events$ | async"
+         [routerLink]="event.id"
+         class="md:hidden flex flex-col p-4 cursor-pointer hover:bg-gray-100">
+      <div class="flex flex-row gap-2">
+        <span class="flex-grow font-bold">{{event.name}}</span>
+        <app-event-status-pill [status]="event.status"></app-event-status-pill>
+      </div>
+      <app-event-type-badge [type]="event.type"></app-event-type-badge>
+      <div class="mt-2">
+        <span class="text-gray-500">Start Date: </span>
+        <span>{{event.startDate | date}}</span>
+      </div>
+      <div>
+        <span class="text-gray-500">End Date: </span>
+        <span>{{event.endDate | date}}</span>
+      </div>
+    </div>
+  </six-card>
+
+  <!--  <six-card class="w-full p-0 mt-4">-->
+  <!--    <div *ngFor="let event of events$ | async" [routerLink]="event.id"-->
+  <!--         class="grid grid-flow-col auto-cols-max gap-2 p-2 cursor-pointer hover:bg-gray-100">-->
+  <!--      <span class="w-full">{{event.name}}</span>-->
+  <!--      <span>{{event.type}}</span>-->
+  <!--      <span>{{event.startDate | date}}</span>-->
+  <!--      <span>{{event.endDate | date}}</span>-->
+  <!--      <app-event-status-pill [status]="event.status" class="ml-auto"></app-event-status-pill>-->
+  <!--    </div>-->
+  <!--  </six-card>-->
+</div>

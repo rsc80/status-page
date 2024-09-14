@@ -1,37 +1,22 @@
-<ng-container *ngIf="event$ | async as event">
-  <div class="flex flex-row justify-between items-center">
+<div *ngIf="event$ | async as event" class="container xl:px-52 mx-auto">
+  <div class="flex flex-col sm:flex-row justify-between sm:items-center">
     <div>
-      <h1 class="text-3xl mt-0 mb-0">{{event.name}}</h1>
+      <h1 class="text-3xl mt-0 mb-2 sm:mb-0">{{event.name}}</h1>
 
-      <div [ngSwitch]="event.type" class="flex items-center gap-2">
-        <ng-container *ngSwitchCase="'Maintenance'">
-          <div class="flex-grow-0 rounded-full bg-blue-600 h-2 w-2 mt-[2px]"></div>
-          <span>Maintenance</span>
-        </ng-container>
-        <ng-container *ngSwitchCase="'Incident'">
-          <div class="flex-grow-0 rounded-full bg-red-600 h-2 w-2 mt-[2px]"></div>
-          <span>Incident</span>
-        </ng-container>
-      </div>
+      <app-event-type-badge [type]="event.type"></app-event-type-badge>
     </div>
-    <div [ngSwitch]="event.status">
-      <div *ngSwitchCase="'Done'" class="border-2 border-green-600 text-green-600 p-[4px]">{{event.status}}</div>
-      <div *ngSwitchCase="'Ongoing'" class="border-2 border-orange-500 text-orange-500 p-[4px]">{{event.status}}</div>
-      <div *ngSwitchCase="'Scheduled'" class="border-2 border-gray-500 text-gray-500 p-[4px]">{{event.status}}</div>
-    </div>
+    <app-event-status-pill [status]="event.status"></app-event-status-pill>
   </div>
 
-  <div class="flex flex-row justify-between items-center mt-8">
-
-    <div>
+  <div class="flex flex-col sm:flex-row justify-between sm:items-center mt-8">
+    <div class="flex sm:block flex-row-reverse justify-end gap-2">
       <div>{{event.startDate | date}}</div>
-      <span>Start Date</span>
+      <span class="text-gray-500">Start Date</span>
     </div>
-    <div>
+    <div class="flex sm:block flex-row-reverse justify-end gap-2">
       <div>{{event.endDate | date}}</div>
-      <span class="flex justify-end">End Date</span>
+      <span class="flex sm:justify-end text-gray-500">End Date</span>
     </div>
-
   </div>
 
   <p class="mt-8">{{event.description}}</p>
@@ -39,11 +24,13 @@
   <h2 class="text-xl mt-16 mb-2">Affected Services</h2>
   <six-card *ngFor="let service of event.affectedServices" class="flex justify-between items-center">
     <span>{{service.name}}</span>
-    <ng-container [ngSwitch]="service.status">
-      <div *ngSwitchCase="'SUCCESS'" [title]="service.status" class="flex-grow-0 rounded-full bg-green-600 h-4 w-4"></div>
-      <div *ngSwitchCase="'DEGRADED'" [title]="service.status" class="flex-grow-0 rounded-full bg-orange-500 h-4 w-4"></div>
-      <div *ngSwitchCase="'FAILURE'" [title]="service.status" class="flex-grow-0 rounded-full bg-red-950 h-4 w-4"></div>
-    </ng-container>
+    <six-tooltip [content]="service.status">
+      <ng-container [ngSwitch]="service.status">
+        <div *ngSwitchCase="'SUCCESS'" class="flex-grow-0 rounded-full bg-green-600 h-4 w-4"></div>
+        <div *ngSwitchCase="'DEGRADED'" class="flex-grow-0 rounded-full bg-orange-500 h-4 w-4"></div>
+        <div *ngSwitchCase="'FAILURE'" class="flex-grow-0 rounded-full bg-red-950 h-4 w-4"></div>
+      </ng-container>
+    </six-tooltip>
   </six-card>
 
-</ng-container>
+</div>
