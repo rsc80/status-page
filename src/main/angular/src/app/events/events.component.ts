@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {UiLibraryAngularModule} from "@six-group/ui-library-angular";
-import {AsyncPipe, DatePipe, NgForOf} from "@angular/common";
+import {AsyncPipe, DatePipe, NgForOf, NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {BehaviorSubject, Observable, of, switchMap, withLatestFrom} from 'rxjs';
 import {EventService} from "../services/event.service";
@@ -17,7 +17,8 @@ import {EventTypeBadgeComponent} from "../event-type-badge/event-type-badge.comp
     RouterLink,
     AsyncPipe,
     EventStatusPillComponent,
-    EventTypeBadgeComponent
+    EventTypeBadgeComponent,
+    NgIf
   ],
   templateUrl: './events.component.html',
   styleUrl: './events.component.scss'

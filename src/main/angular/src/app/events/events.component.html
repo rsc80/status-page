@@ -1,49 +1,57 @@
 <div class="container xl:px-52 mx-auto">
-  <h1 class="text-3xl mt-10">Events</h1>
+  <div *ngIf="events$ | async as events; else loading">
 
-  <div class="flex flex-row gap-4 mt-4">
-    <six-badge [type]="filteredEventType$.value === 'Maintenance' ? 'info' : 'primary'"
-               (click)="filterEventType('Maintenance')"
-               pill
-               class="cursor-pointer">
-      <app-event-type-badge type="Maintenance" class="p-1"></app-event-type-badge>
-    </six-badge>
-    <six-badge [type]="filteredEventType$.value === 'Incident' ? 'info' : 'primary'"
-               (click)="filterEventType('Incident')"
-               pill
-               class="cursor-pointer">
-      <app-event-type-badge type="Incident" class="p-1"></app-event-type-badge>
-    </six-badge>
+    <h1 class="text-3xl mt-10">Events</h1>
+
+    <div class="flex flex-row gap-4 mt-4">
+      <six-badge [type]="filteredEventType$.value === 'Maintenance' ? 'info' : 'primary'"
+                 (click)="filterEventType('Maintenance')"
+                 pill
+                 class="cursor-pointer">
+        <app-event-type-badge type="Maintenance" class="p-1"></app-event-type-badge>
+      </six-badge>
+      <six-badge [type]="filteredEventType$.value === 'Incident' ? 'info' : 'primary'"
+                 (click)="filterEventType('Incident')"
+                 pill
+                 class="cursor-pointer">
+        <app-event-type-badge type="Incident" class="p-1"></app-event-type-badge>
+      </six-badge>
+    </div>
+
+    <six-card class="w-full p-0 mt-4">
+      <div *ngFor="let event of events"
+           [routerLink]="event.id"
+           class="hidden md:grid grid-cols-6 gap-4 p-2 cursor-pointer hover:bg-gray-100">
+        <span class="font-bold col-span-2">{{event.name}}</span>
+        <app-event-type-badge [type]="event.eventType"></app-event-type-badge>
+        <span>{{event.start | date}}</span>
+        <span>{{event.end | date}}</span>
+        <app-event-status-pill [status]="event.eventStatus" class="ml-auto"></app-event-status-pill>
+      </div>
+
+      <div *ngFor="let event of events"
+           [routerLink]="event.id"
+           class="md:hidden flex flex-col p-4 cursor-pointer hover:bg-gray-100">
+        <div class="flex flex-row gap-2">
+          <span class="flex-grow font-bold">{{event.name}}</span>
+          <app-event-status-pill [status]="event.eventStatus"></app-event-status-pill>
+        </div>
+        <app-event-type-badge [type]="event.eventType"></app-event-type-badge>
+        <div class="mt-2">
+          <span class="text-gray-500">Start Date: </span>
+          <span>{{event.start | date}}</span>
+        </div>
+        <div>
+          <span class="text-gray-500">End Date: </span>
+          <span>{{event.end | date}}</span>
+        </div>
+      </div>
+    </six-card>
   </div>
 
-  <six-card class="w-full p-0 mt-4">
-    <div *ngFor="let event of events$ | async"
-         [routerLink]="event.id"
-         class="hidden md:grid grid-cols-6 gap-4 p-2 cursor-pointer hover:bg-gray-100">
-      <span class="font-bold col-span-2">{{event.name}}</span>
-      <app-event-type-badge [type]="event.eventType"></app-event-type-badge>
-      <span>{{event.start | date}}</span>
-      <span>{{event.end | date}}</span>
-      <app-event-status-pill [status]="event.eventStatus" class="ml-auto"></app-event-status-pill>
+  <ng-template #loading>
+    <div class="flex justify-center mt-28">
+      <six-spinner class="text-8xl"></six-spinner>
     </div>
-
-    <div *ngFor="let event of events$ | async"
-         [routerLink]="event.id"
-         class="md:hidden flex flex-col p-4 cursor-pointer hover:bg-gray-100">
-      <div class="flex flex-row gap-2">
-        <span class="flex-grow font-bold">{{event.name}}</span>
-        <app-event-status-pill [status]="event.eventStatus"></app-event-status-pill>
-      </div>
-      <app-event-type-badge [type]="event.eventType"></app-event-type-badge>
-      <div class="mt-2">
-        <span class="text-gray-500">Start Date: </span>
-        <span>{{event.start | date}}</span>
-      </div>
-      <div>
-        <span class="text-gray-500">End Date: </span>
-        <span>{{event.end | date}}</span>
-      </div>
-    </div>
-  </six-card>
-
+  </ng-template>
 </div>

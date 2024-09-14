@@ -35,6 +35,7 @@ export class EventComponent {
     private activatedRoute: ActivatedRoute
   ) {
     this.event$ = this.activatedRoute.params.pipe(
-      switchMap(params => this.eventService.getEvent(params["id"])));
+      switchMap(params => this.eventService.getEvent(params["id"]))
+    );
   }
 }

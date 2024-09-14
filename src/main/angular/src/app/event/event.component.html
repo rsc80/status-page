@@ -1,36 +1,44 @@
-<div *ngIf="event$ | async as event" class="container xl:px-52 mx-auto">
-  <div class="flex flex-col sm:flex-row justify-between sm:items-center">
-    <div>
-      <h1 class="text-3xl mt-0 mb-2 sm:mb-0">{{event.name}}</h1>
+<div class="container xl:px-52 mx-auto">
+  <div *ngIf="event$ | async as event; else loading">
 
-      <app-event-type-badge [type]="event.eventType"></app-event-type-badge>
+    <div class="flex flex-col sm:flex-row justify-between sm:items-center">
+      <div>
+        <h1 class="text-3xl mt-0 mb-2 sm:mb-0">{{event.name}}</h1>
+
+        <app-event-type-badge [type]="event.eventType"></app-event-type-badge>
+      </div>
+      <app-event-status-pill [status]="event.eventStatus"></app-event-status-pill>
     </div>
-    <app-event-status-pill [status]="event.eventStatus"></app-event-status-pill>
+
+    <div class="flex flex-col sm:flex-row justify-between sm:items-center mt-8">
+      <div class="flex sm:block flex-row-reverse justify-end gap-2">
+        <div>{{event.start | date}}</div>
+        <span class="text-gray-500">Start Date</span>
+      </div>
+      <div class="flex sm:block flex-row-reverse justify-end gap-2">
+        <div>{{event.end | date}}</div>
+        <span class="flex sm:justify-end text-gray-500">End Date</span>
+      </div>
+    </div>
+
+    <p class="mt-8">{{event.description}}</p>
+
+    <h2 class="text-xl mt-16 mb-2">Affected Services</h2>
+    <six-card *ngFor="let service of event.affectedServices" class="flex justify-between items-center">
+      <span>{{service.name}}</span>
+      <six-tooltip [content]="service.status">
+        <ng-container [ngSwitch]="service.status">
+          <div *ngSwitchCase="'SUCCESS'" class="flex-grow-0 rounded-full bg-green-600 h-4 w-4"></div>
+          <div *ngSwitchCase="'DEGRADED'" class="flex-grow-0 rounded-full bg-orange-500 h-4 w-4"></div>
+          <div *ngSwitchCase="'FAILURE'" class="flex-grow-0 rounded-full bg-red-950 h-4 w-4"></div>
+        </ng-container>
+      </six-tooltip>
+    </six-card>
   </div>
 
-  <div class="flex flex-col sm:flex-row justify-between sm:items-center mt-8">
-    <div class="flex sm:block flex-row-reverse justify-end gap-2">
-      <div>{{event.start | date}}</div>
-      <span class="text-gray-500">Start Date</span>
+  <ng-template #loading>
+    <div class="flex justify-center mt-28">
+      <six-spinner class="text-8xl"></six-spinner>
     </div>
-    <div class="flex sm:block flex-row-reverse justify-end gap-2">
-      <div>{{event.end | date}}</div>
-      <span class="flex sm:justify-end text-gray-500">End Date</span>
-    </div>
-  </div>
-
-  <p class="mt-8">{{event.description}}</p>
-
-  <h2 class="text-xl mt-16 mb-2">Affected Services</h2>
-  <six-card *ngFor="let service of event.affectedServices" class="flex justify-between items-center">
-    <span>{{service.name}}</span>
-    <six-tooltip [content]="service.status">
-      <ng-container [ngSwitch]="service.status">
-        <div *ngSwitchCase="'SUCCESS'" class="flex-grow-0 rounded-full bg-green-600 h-4 w-4"></div>
-        <div *ngSwitchCase="'DEGRADED'" class="flex-grow-0 rounded-full bg-orange-500 h-4 w-4"></div>
-        <div *ngSwitchCase="'FAILURE'" class="flex-grow-0 rounded-full bg-red-950 h-4 w-4"></div>
-      </ng-container>
-    </six-tooltip>
-  </six-card>
-
+  </ng-template>
 </div>
