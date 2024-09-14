@@ -1,16 +1,13 @@
 package com.six_group.statuspageapp.domain;
 
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.six_group.statuspageapp.StatusPageAppApplication;
 import com.six_group.statuspageapp.api.dto.ParticipantDto;
 import com.six_group.statuspageapp.api.dto.ParticipantOverviewDto;
 import com.six_group.statuspageapp.api.dto.StatusIndicator;
 import com.six_group.statuspageapp.domain.participant.*;
-import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 @org.springframework.stereotype.Service
@@ -21,9 +18,8 @@ public class ParticipantService {
     private static final double WARNING_THRESHOLD = 0.10;
 
     public List<ParticipantOverviewDto> getParticipantOverview() throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        InputStream inputStream = new ClassPathResource("participant-test-data.json").getInputStream();
-        List<Participant> participants = objectMapper.readValue(inputStream, new TypeReference<>() {});
+
+        List<Participant> participants = StatusPageAppApplication.PARTICIPANT_MAP.values().stream().toList();
 
         return participants.parallelStream()
                 .map(this::aggregateDailyMetricsForParticipant)
@@ -32,9 +28,8 @@ public class ParticipantService {
     }
 
     public List<ParticipantDto> getAllParticipants() throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        InputStream inputStream = new ClassPathResource("participant-test-data.json").getInputStream();
-        List<Participant> participants = objectMapper.readValue(inputStream, new TypeReference<>() {});
+
+        List<Participant> participants = StatusPageAppApplication.PARTICIPANT_MAP.values().stream().toList();
 
         return participants.parallelStream()
                 .map(this::aggregateDailyMetricsForParticipant)
