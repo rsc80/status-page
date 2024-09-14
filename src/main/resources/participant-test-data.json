@@ -1,73 +1,170 @@
 [
   {
     "id": "1",
-    "name": "UBS",
+    "name": "Cembalo Bank 1",
     "dailyData": [
       {
         "date": "2024-09-01",
-        "dailyMetrics": {},
-        "hours": {
-          "00:00": { "successCount": 90, "clientErrorCount": 5, "serverErrorCount": 5 },
-          "01:00": { "successCount": 110, "clientErrorCount": 5, "serverErrorCount": 5 },
-          "02:00": { "successCount": 70, "clientErrorCount": 5, "serverErrorCount": 5 }
-        }
+        "apis": [
+          {
+            "apiName": "AIS",
+            "apiVersion": "v3",
+            "dailyMetrics": {},
+            "hours": {
+              "00:00": { "successCount": 90, "clientErrorCount": 5, "serverErrorCount": 5 },
+              "01:00": { "successCount": 110, "clientErrorCount": 5, "serverErrorCount": 5 },
+              "02:00": { "successCount": 70, "clientErrorCount": 5, "serverErrorCount": 5 }
+            }
+          },
+          {
+            "apiName": "PSS",
+            "apiVersion": "v3",
+            "dailyMetrics": {},
+            "hours": {
+              "00:00": { "successCount": 100, "clientErrorCount": 10, "serverErrorCount": 10 },
+              "01:00": { "successCount": 120, "clientErrorCount": 10, "serverErrorCount": 10 },
+              "02:00": { "successCount": 80, "clientErrorCount": 10, "serverErrorCount": 10 }
+            }
+          }
+        ]
       },
       {
         "date": "2024-09-02",
-        "dailyMetrics": {},
-        "hours": {
-          "00:00": { "successCount": 100, "clientErrorCount": 5, "serverErrorCount": 5 },
-          "01:00": { "successCount": 120, "clientErrorCount": 5, "serverErrorCount": 5 },
-          "02:00": { "successCount": 80, "clientErrorCount": 5, "serverErrorCount": 5 }
-        }
+        "apis": [
+          {
+            "apiName": "AIS",
+            "apiVersion": "v3",
+            "dailyMetrics": {},
+            "hours": {
+              "00:00": { "successCount": 100, "clientErrorCount": 5, "serverErrorCount": 5 },
+              "01:00": { "successCount": 120, "clientErrorCount": 5, "serverErrorCount": 5 },
+              "02:00": { "successCount": 80, "clientErrorCount": 5, "serverErrorCount": 5 }
+            }
+          },
+          {
+            "apiName": "PSS",
+            "apiVersion": "v3",
+            "dailyMetrics": {},
+            "hours": {
+              "00:00": { "successCount": 110, "clientErrorCount": 10, "serverErrorCount": 10 },
+              "01:00": { "successCount": 130, "clientErrorCount": 10, "serverErrorCount": 10 },
+              "02:00": { "successCount": 90, "clientErrorCount": 10, "serverErrorCount": 10 }
+            }
+          }
+        ]
       }
     ]
   },
   {
     "id": "2",
-    "name": "ZKB",
+    "name": "Cembalo Bank 2",
     "dailyData": [
       {
         "date": "2024-09-01",
-        "dailyMetrics": {},
-        "hours": {
-          "00:00": { "successCount": 120, "clientErrorCount": 5, "serverErrorCount": 5 },
-          "01:00": { "successCount": 130, "clientErrorCount": 5, "serverErrorCount": 5 },
-          "02:00": { "successCount": 80, "clientErrorCount": 5, "serverErrorCount": 5 }
-        }
+        "apis": [
+          {
+            "apiName": "AIS",
+            "apiVersion": "v3",
+            "dailyMetrics": {},
+            "hours": {
+              "00:00": { "successCount": 120, "clientErrorCount": 5, "serverErrorCount": 5 },
+              "01:00": { "successCount": 130, "clientErrorCount": 5, "serverErrorCount": 5 },
+              "02:00": { "successCount": 80, "clientErrorCount": 5, "serverErrorCount": 5 }
+            }
+          },
+          {
+            "apiName": "PSS",
+            "apiVersion": "v3",
+            "dailyMetrics": {},
+            "hours": {
+              "00:00": { "successCount": 140, "clientErrorCount": 10, "serverErrorCount": 10 },
+              "01:00": { "successCount": 150, "clientErrorCount": 10, "serverErrorCount": 10 },
+              "02:00": { "successCount": 90, "clientErrorCount": 10, "serverErrorCount": 10 }
+            }
+          }
+        ]
       },
       {
         "date": "2024-09-02",
-        "dailyMetrics": {},
-        "hours": {
-          "00:00": { "successCount": 110, "clientErrorCount": 5, "serverErrorCount": 5 },
-          "01:00": { "successCount": 140, "clientErrorCount": 5, "serverErrorCount": 5 },
-          "02:00": { "successCount": 90, "clientErrorCount": 5, "serverErrorCount": 5 }
-        }
+        "apis": [
+          {
+            "apiName": "AIS",
+            "apiVersion": "v3",
+            "dailyMetrics": {},
+            "hours": {
+              "00:00": { "successCount": 110, "clientErrorCount": 5, "serverErrorCount": 5 },
+              "01:00": { "successCount": 140, "clientErrorCount": 5, "serverErrorCount": 5 },
+              "02:00": { "successCount": 90, "clientErrorCount": 5, "serverErrorCount": 5 }
+            }
+          },
+          {
+            "apiName": "PSS",
+            "apiVersion": "v3",
+            "dailyMetrics": {
+            },
+            "hours": {
+              "00:00": { "successCount": 150, "clientErrorCount": 10, "serverErrorCount": 10 },
+              "01:00": { "successCount": 160, "clientErrorCount": 10, "serverErrorCount": 10 },
+              "02:00": { "successCount": 100, "clientErrorCount": 10, "serverErrorCount": 10 }
+            }
+          }
+        ]
       }
     ]
   },
   {
     "id": "3",
-    "name": "BKB",
+    "name": "Cembalo Bank 3",
     "dailyData": [
       {
         "date": "2024-09-01",
-        "dailyMetrics": {},
-        "hours": {
-          "00:00": { "successCount": 130, "clientErrorCount": 5, "serverErrorCount": 5 },
-          "01:00": { "successCount": 140, "clientErrorCount": 5, "serverErrorCount": 5 },
-          "02:00": { "successCount": 110, "clientErrorCount": 5, "serverErrorCount": 5 }
-        }
+        "apis": [
+          {
+            "apiName": "AIS",
+            "apiVersion": "v3",
+            "dailyMetrics": {},
+            "hours": {
+              "00:00": { "successCount": 130, "clientErrorCount": 5, "serverErrorCount": 5 },
+              "01:00": { "successCount": 140, "clientErrorCount": 5, "serverErrorCount": 5 },
+              "02:00": { "successCount": 110, "clientErrorCount": 5, "serverErrorCount": 5 }
+            }
+          },
+          {
+            "apiName": "PSS",
+            "apiVersion": "v3",
+            "dailyMetrics": {},
+            "hours": {
+              "00:00": { "successCount": 140, "clientErrorCount": 10, "serverErrorCount": 10 },
+              "01:00": { "successCount": 150, "clientErrorCount": 10, "serverErrorCount": 10 },
+              "02:00": { "successCount": 110, "clientErrorCount": 10, "serverErrorCount": 10 }
+            }
+          }
+        ]
       },
       {
         "date": "2024-09-02",
-        "dailyMetrics": {},
-        "hours": {
-          "00:00": { "successCount": 120, "clientErrorCount": 5, "serverErrorCount": 5 },
-          "01:00": { "successCount": 150, "clientErrorCount": 5, "serverErrorCount": 5 },
-          "02:00": { "successCount": 100, "clientErrorCount": 5, "serverErrorCount": 5 }
-        }
+        "apis": [
+          {
+            "apiName": "AIS",
+            "apiVersion": "v3",
+            "dailyMetrics": {},
+            "hours": {
+              "00:00": { "successCount": 120, "clientErrorCount": 5, "serverErrorCount": 5 },
+              "01:00": { "successCount": 150, "clientErrorCount": 5, "serverErrorCount": 5 },
+              "02:00": { "successCount": 100, "clientErrorCount": 5, "serverErrorCount": 5 }
+            }
+          },
+          {
+            "apiName": "PSS",
+            "apiVersion": "v3",
+            "dailyMetrics": {},
+            "hours": {
+              "00:00": { "successCount": 130, "clientErrorCount": 10, "serverErrorCount": 10 },
+              "01:00": { "successCount": 160, "clientErrorCount": 10, "serverErrorCount": 10 },
+              "02:00": { "successCount": 110, "clientErrorCount": 10, "serverErrorCount": 10 }
+            }
+          }
+        ]
       }
     ]
   }
