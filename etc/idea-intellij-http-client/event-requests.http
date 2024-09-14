@@ -1,0 +1,17 @@
+###
+POST localhost:8080/api/events
+Content-Type: application/json
+
+< ./test-data/incident1.json
+
+###
+POST localhost:8080/api/events
+Content-Type: application/json
+
+< ./test-data/maintenance1.json
+
+###
+GET localhost:8080/api/events
+
+###
+GET localhost:8080/api/events/M-1
