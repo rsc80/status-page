@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.six_group.statuspageapp.StatusPageAppApplication;
 import com.six_group.statuspageapp.api.dto.EventDto;
 import com.six_group.statuspageapp.domain.event.Event;
 import com.six_group.statuspageapp.domain.event.mapper.EventMapper;
@@ -25,22 +26,14 @@ public class EventService {
     objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
   }
 
-  public List<EventDto> getAllEvents() throws IOException {
-    InputStream inputStream = new ClassPathResource("event-test-data.json").getInputStream();
-
-    List<Event> events = objectMapper.readValue(inputStream, new TypeReference<>() {
-    });
-
-    return events.stream().map(EventMapper::toDto).toList();
+  public List<EventDto> getAllEvents() {
+    return StatusPageAppApplication.EVENT_MAP.values().stream()
+        .map(EventMapper::toDto)
+        .toList();
   }
 
   public EventDto getEventById(String id) throws IOException {
-    InputStream inputStream = new ClassPathResource("event-test-data.json").getInputStream();
-
-    List<Event> events = objectMapper.readValue(inputStream, new TypeReference<>() {
-    });
-
-    return events.stream()
+    return StatusPageAppApplication.EVENT_MAP.values().stream()
         .filter(event -> id.equals(event.getId()))
         .map(EventMapper::toDto)
         .findFirst()
@@ -48,8 +41,9 @@ public class EventService {
   }
 
   public EventDto createEvent(EventDto eventDto) {
-    return null;
-    //EventMapper.toDto(this.eventRepository.save(EventMapper.toBo(eventDto)));
+    Event event = EventMapper.toBo(eventDto);
+    StatusPageAppApplication.EVENT_MAP.put(event.getId(), event);
+    return eventDto;
   }
 
 

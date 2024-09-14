@@ -1,0 +1,9 @@
+{
+  "id": "M-128737",
+  "participant": "bLink",
+  "eventType":  "MAINTENANCE",
+  "eventStatus": "ONGOING",
+  "start":  "2099-09-03T15:00:00",
+  "end": null,
+  "affectedServices":  ["bo"]
+}
