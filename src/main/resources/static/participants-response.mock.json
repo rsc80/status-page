@@ -1,7 +1,7 @@
 [
   {
     "id": "1",
-    "name": "Cembalo Bank 1",
+    "name": "bLink",
     "dailyData": [
       {
         "date": "2024-09-01",
@@ -128,6 +128,7 @@
   {
     "id": "2",
     "name": "Cembalo Bank 2",
+    "isExternal": true,
     "dailyData": [
       {
         "date": "2024-09-01",
@@ -254,6 +255,7 @@
   {
     "id": "3",
     "name": "Cembalo Bank 3",
+    "isExternal": true,
     "dailyData": [
       {
         "date": "2024-09-01",
