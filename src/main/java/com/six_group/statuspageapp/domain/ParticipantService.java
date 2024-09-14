@@ -9,6 +9,7 @@ import com.six_group.statuspageapp.domain.participant.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @org.springframework.stereotype.Service
 public class ParticipantService {
@@ -51,7 +52,7 @@ public class ParticipantService {
     private Participant aggregateDailyMetricsForParticipant(Participant participant) {
         var aggregatedDailyData = participant.getDailyData().stream()
                 .map(this::aggregateDailyMetrics)
-                .toList();
+                .collect(Collectors.toList());
 
         participant.setDailyData(aggregatedDailyData);
 
@@ -69,11 +70,11 @@ public class ParticipantService {
             totalSuccessCount = 0;
             totalClientErrorCount = 0;
             totalServerErrorCount = 0;
-            for (HourlyMetrics hourlyMetrics : service.getHours().values()){
-            totalSuccessCount += hourlyMetrics.getSuccessCount();
-            totalClientErrorCount += hourlyMetrics.getClientErrorCount();
-            totalServerErrorCount += hourlyMetrics.getServerErrorCount();
-            totalRequests = totalSuccessCount + totalClientErrorCount + totalServerErrorCount;
+            for (HourlyMetrics hourlyMetrics : service.getHours().values()) {
+                totalSuccessCount += hourlyMetrics.getSuccessCount();
+                totalClientErrorCount += hourlyMetrics.getClientErrorCount();
+                totalServerErrorCount += hourlyMetrics.getServerErrorCount();
+                totalRequests = totalSuccessCount + totalClientErrorCount + totalServerErrorCount;
             }
             buildDailyMetrics(service, totalRequests, totalSuccessCount, totalClientErrorCount, totalServerErrorCount);
             calculateStatusIndicator(dayData, totalServerErrorCount, totalRequests);
