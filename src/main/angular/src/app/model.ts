@@ -39,5 +39,6 @@ export interface DailyData {
 export interface Participant {
     id: string;
     name: string;
+    isExternal: boolean;
     dailyData: DailyData[]
 }

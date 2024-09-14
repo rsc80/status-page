@@ -18,8 +18,8 @@ import dayjs from "dayjs";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatusComponent {
-  blinkStatus: StatusRow;
-  statusRows$: Observable<StatusRow[]>;
+  internalServices$: Observable<StatusRow[]>;
+  externalServices$: Observable<StatusRow[]>;
 
   constructor(@Inject(Router) private router: Router,
               @Inject(StatusService) private statusService: StatusService) {
@@ -27,16 +27,11 @@ export class StatusComponent {
     for (let i = 0; i <= 60; i++) {
       items.push({id: '' + i, status: "NO_DATA", rangeStart: dayjs().subtract(60 - i, "days").toDate()});
     }
-    this.statusRows$ = this.statusService.getParticipants().pipe(map(p => {
-      return p.map(p => {
-        return {
-          service: p.name,
-          items: [...items.map(i => this.toStatusItems(i, p))],
-          resolutionMinutes: 60
-        } as StatusRow;
-      })
-    }));
-    this.blinkStatus = {service: "bLink", items, resolutionMinutes: 60 * 24};
+    let participants$ = this.statusService.getParticipants();
+    this.externalServices$ = participants$.pipe(
+      map(p => p.filter(p => p.isExternal).map(this.enrich(items))));
+    this.internalServices$ = participants$.pipe(
+      map(p => p.filter(p => !p.isExternal).map(this.enrich(items))));
   }
 
   onClickStatusBubble(bubble: StatusItem) {
@@ -44,12 +39,18 @@ export class StatusComponent {
     this.router.navigate(["status", bubble.id]);
   }
 
+  private enrich(items: StatusItem[]) {
+    return (p: Participant) => {
+      return {
+        service: p.name,
+        items: [...items.map(i => this.toStatusItems(i, p))],
+        resolutionMinutes: 60
+      } as StatusRow;
+    };
+  }
+
   private toStatusItems(emptyStatusItem: StatusItem, p: Participant) {
-    let dailyData = p.dailyData.filter(d => {
-      console.log("emptyStatusItem.rangeStart", emptyStatusItem.rangeStart);
-      let isSame = dayjs(d.date).isSame(dayjs(emptyStatusItem.rangeStart), "day");
-      return isSame;
-    })[0];
+    let dailyData = p.dailyData.filter(d => dayjs(d.date).isSame(dayjs(emptyStatusItem.rangeStart), "day"))[0];
     return dailyData && {
       status: this.mapStatus(dailyData.statusIndicator),
       id: dailyData.date,
