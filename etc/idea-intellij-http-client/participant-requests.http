@@ -1,14 +1,14 @@
 ###
-GET localhost:8080/api/applications
+GET {{base_url}}/api/applications
 
 ###
-GET localhost:8080/api/participants
+GET {{base_url}}/api/participants
 
 ###
-GET localhost:8080/api/participants-overview
+GET {{base_url}}/api/participants-overview
 
 ###
-POST http://localhost:8080/api/participants/1/2024-09-14/11:00/ais/v3
+POST {{base_url}}/api/participants/1/2024-09-14/11:00/ais/v3
 Content-Type: application/json
 
 {
@@ -18,4 +18,4 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/api/participants/1/2024-09-14
+GET http://{{base_url}}/api/participants/1/2024-09-14
