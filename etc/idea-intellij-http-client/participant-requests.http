@@ -8,23 +8,23 @@ GET {{base_url}}/api/participants
 GET {{base_url}}/api/participants-overview
 
 ###
-POST {{base_url}}/api/participants/1/2024-09-14/11:00/ais/v3
+POST {{base_url}}/api/participants/1/2024-09-14/11:00/Healthcheck/v3
 Content-Type: application/json
 
 {
   "successCount": 222,
   "clientErrorCount": 22,
-  "serverErrorCount": 33
+  "serverErrorCount": 25
 }
 
 ###
-POST {{base_url}}/api/participants/2/2024-09-13/11:00/ais/v3
+POST {{base_url}}/api/participants/2/2024-09-14/11:00/AIS/v3
 Content-Type: application/json
 
 {
-  "successCount": 222,
+  "successCount": 200,
   "clientErrorCount": 0,
-  "serverErrorCount": 0
+  "serverErrorCount": 13
 }
 
 ###
