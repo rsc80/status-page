@@ -2,37 +2,61 @@
   {
     "id": "I-1",
     "participant": "bLink",
-    "eventType":  "INCIDENT",
+    "eventType": "INCIDENT",
     "eventStatus": "ONGOING",
-    "start":  "2024-09-03T15:00:00",
+    "start": "2024-09-03T15:00:00",
     "end": null,
-    "affectedServices":  ["consent"]
+    "affectedServices": [
+      {
+        "name": "consent",
+        "serviceStatus": "FAILURE"
+      }
+    ]
   },
   {
     "id": "I-2",
     "participant": "bLink",
-    "eventType":  "INCIDENT",
+    "eventType": "INCIDENT",
     "eventStatus": "FINISHED",
-    "start":  "2024-09-03T15:00:00",
+    "start": "2024-09-03T15:00:00",
     "end": "2024-09-04T22:00:00",
-    "affectedServices":  ["core"]
+    "affectedServices": [
+      {
+        "name": "core",
+        "serviceStatus": "FAILURE"
+      }
+    ]
   },
   {
     "id": "M-1",
     "participant": "bLink",
-    "eventType":  "MAINTENANCE",
+    "eventType": "MAINTENANCE",
     "eventStatus": "SCHEDULED",
-    "start":  "2099-09-03T15:00:00",
+    "start": "2099-09-03T15:00:00",
     "end": "2100-09-03T15:00:00",
-    "affectedServices":  ["core","consent"]
+    "affectedServices": [
+      {
+        "name": "core",
+        "serviceStatus": "RUNNING_NORMALLY"
+      },
+      {
+        "name": "core",
+        "serviceStatus": "NO_DATA"
+      }
+    ]
   },
   {
     "id": "M-2",
     "participant": "bLink",
-    "eventType":  "MAINTENANCE",
+    "eventType": "MAINTENANCE",
     "eventStatus": "FINISHED",
-    "start":  "2014-09-03T15:00:00",
+    "start": "2014-09-03T15:00:00",
     "end": "2014-09-03T15:00:01",
-    "affectedServices":  ["core"]
+    "affectedServices": [
+      {
+        "name": "core",
+        "serviceStatus": "RUNNING_NORMALLY"
+      }
+    ]
   }
 ]

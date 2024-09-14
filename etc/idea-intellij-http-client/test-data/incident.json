@@ -1,9 +1,14 @@
 {
   "id": "I-7218",
   "participant": "bLink",
-  "eventType":  "INCIDENT",
+  "eventType": "INCIDENT",
   "eventStatus": "ONGOING",
-  "start":  "2024-09-03T15:00:00",
+  "start": "2024-09-03T15:00:00",
   "end": null,
-  "affectedServices":  ["kronos"]
+  "affectedServices": [
+    {
+      "name": "kronos",
+      "serviceStatus": "DEGRADED"
+    }
+  ]
 }

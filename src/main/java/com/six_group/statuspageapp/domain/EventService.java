@@ -18,14 +18,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class EventService {
 
-  private final ObjectMapper objectMapper;
-
-  public EventService() {
-    objectMapper = new ObjectMapper();
-    objectMapper.registerModule(new JavaTimeModule());
-    objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-  }
-
   public List<EventDto> getAllEvents() {
     return StatusPageAppApplication.EVENT_MAP.values().stream()
         .map(EventMapper::toDto)
@@ -34,7 +26,7 @@ public class EventService {
 
   public EventDto getEventById(String id) throws IOException {
     return StatusPageAppApplication.EVENT_MAP.values().stream()
-        .filter(event -> id.equals(event.getId()))
+        .filter(event -> id.equals(event.id()))
         .map(EventMapper::toDto)
         .findFirst()
         .orElseThrow();
@@ -42,9 +34,7 @@ public class EventService {
 
   public EventDto createEvent(EventDto eventDto) {
     Event event = EventMapper.toBo(eventDto);
-    StatusPageAppApplication.EVENT_MAP.put(event.getId(), event);
+    StatusPageAppApplication.EVENT_MAP.put(event.id(), event);
     return eventDto;
   }
-
-
 }

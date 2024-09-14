@@ -18,19 +18,19 @@ public final class EventMapper {
         EventStatus.valueOf(eventDto.eventStatus()),
         eventDto.start(),
         eventDto.end(),
-        eventDto.affectedServices()
+        AffectedServiceMapper.toBoList(eventDto.affectedServices())
     );
   }
 
   public static EventDto toDto(Event event) {
     return new EventDto(
-        event.getId(),
-        event.getParticipant(),
-        event.getEventType().name(),
-        event.getEventStatus().name(),
-        event.getStart(),
-        event.getEnd(),
-        event.getAffectedServices()
+        event.id(),
+        event.participant(),
+        event.eventType().name(),
+        event.eventStatus().name(),
+        event.start(),
+        event.end(),
+        AffectedServiceMapper.toDtoList(event.affectedServices())
     );
   }
 }

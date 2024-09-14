@@ -11,6 +11,6 @@ public record EventDto(@NotBlank String id,
                        @NotBlank String eventStatus,
                        @NotNull LocalDateTime start,
                        LocalDateTime end,
-                       @NotNull List<String> affectedServices) {
+                       @NotNull List<AffectedServiceDto> affectedServices) {
 
 }

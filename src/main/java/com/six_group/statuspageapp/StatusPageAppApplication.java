@@ -42,7 +42,7 @@ public class StatusPageAppApplication {
             InputStream eventInputStream = new ClassPathResource("event-test-data.json").getInputStream();
             List<Event> events = objectMapper.readValue(eventInputStream, new TypeReference<>() {
             });
-            events.forEach(event -> EVENT_MAP.put(event.getId(), event));
+            events.forEach(event -> EVENT_MAP.put(event.id(), event));
         };
     }
 
