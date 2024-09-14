@@ -53,11 +53,11 @@ export class ChartsComponent implements OnChanges, OnDestroy {
     let labels = Object.keys(service.hours).sort((a, b) => a < b ? -1 : 1);
     let hoursSuccess = labels.map(hour => {
       const hourForChart = extract(service, hour);
-      return hourForChart.hourData.successCount / hourForChart.total;
+      return 100 * (hourForChart.hourData.successCount + hourForChart.hourData.clientErrorCount) / hourForChart.total;
     });
     let hoursFailures = labels.map(hour => {
       const hourForChart = extract(service, hour);
-      return (hourForChart.hourData.serverErrorCount + hourForChart.hourData.serverErrorCount) / hourForChart.total;
+      return 100 * (hourForChart.hourData.serverErrorCount) / hourForChart.total;
     });
 
     let canvasId = this.getCanvasId(service);
@@ -83,6 +83,7 @@ export class ChartsComponent implements OnChanges, OnDestroy {
         scales: {
           y: {
             suggestedMin: 0,
+            suggestedMax: 100,
             stacked: true
           },
           x: {
