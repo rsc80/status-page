@@ -2,7 +2,7 @@
   <div *ngIf="participantStatusDetails$|async as participantStatusDetails; else Loading">
     <h1 class="text-4xl">{{ participantStatusDetails.name }}</h1>
   </div>
-  <app-charts [containers]="(chartsContainers$|async)||[]"
+  <app-charts [canvasIds]="(canvasIds$|async)||[]"
               [participantStatusDetails]="participantStatusDetails$|async"></app-charts>
 
   <ng-template #Loading>

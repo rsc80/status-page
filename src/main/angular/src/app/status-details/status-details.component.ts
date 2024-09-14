@@ -25,13 +25,13 @@ import {ChartsComponent} from "../charts/charts.component";
 })
 export class StatusDetailsComponent {
 
-  protected chartsContainers$: Observable<string[]> | undefined;
+  protected canvasIds$: Observable<string[]> | undefined;
   protected participantStatusDetails$: Observable<ParticipantStatusDetails>;
 
   constructor(@Inject(StatusService) private statusService: StatusService,
               @Inject(ActivatedRoute) private activatedRoute: ActivatedRoute) {
     this.participantStatusDetails$ = this.activatedRoute.params.pipe(switchMap(params => this.statusService.getStatus(params["participantId"], params["day"])));
-    this.chartsContainers$ = this.participantStatusDetails$.pipe(
+    this.canvasIds$ = this.participantStatusDetails$.pipe(
       map(p => p.dayData && p.dayData.services || []),
       map(s => s.map(s => "chart-" + s.serviceName))
     );

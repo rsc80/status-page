@@ -1,21 +1,24 @@
 import {Component, Input, OnChanges, OnDestroy} from '@angular/core';
-import {JsonPipe, NgForOf} from "@angular/common";
+import {JsonPipe, NgForOf, NgIf} from "@angular/common";
 import {Chart} from "chart.js/auto";
 import {ParticipantStatusDetails, Service} from "../model";
+import {UiLibraryAngularModule} from "@six-group/ui-library-angular";
 
 @Component({
   selector: 'app-charts',
   standalone: true,
   imports: [
     NgForOf,
-    JsonPipe
+    JsonPipe,
+    NgIf,
+    UiLibraryAngularModule
   ],
   templateUrl: './charts.component.html',
   styleUrl: './charts.component.scss'
 })
 export class ChartsComponent implements OnChanges, OnDestroy {
 
-  @Input() containers!: string[];
+  @Input() canvasIds!: string[];
   @Input() participantStatusDetails!: ParticipantStatusDetails | null;
   protected services: Service[] = [];
   protected charts: { [key: string]: Chart } = {};
