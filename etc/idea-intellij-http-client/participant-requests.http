@@ -1,2 +1,8 @@
 ###
 GET localhost:8080/api/applications
+
+###
+GET localhost:8080/api/participants
+
+###
+GET localhost:8080/api/participants-overview

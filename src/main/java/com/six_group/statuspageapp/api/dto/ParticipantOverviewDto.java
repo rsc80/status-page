@@ -5,9 +5,10 @@ import com.six_group.statuspageapp.domain.participant.DayDataOverview;
 import java.util.List;
 
 public record ParticipantOverviewDto(
-        String id,
-        String name,
-        List<DayDataOverview> dailyData
+    String id,
+    String name,
+    Boolean isExternal,
+    List<DayDataOverview> dailyData
 ) {
 
 

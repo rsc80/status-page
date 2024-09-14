@@ -12,62 +12,73 @@ import java.util.stream.Collectors;
 
 @Document
 public class Participant {
-    @Id
-    private String id;
+  @Id
+  private String id;
 
-    @Searchable
-    private String name;
+  @Searchable
+  private String name;
 
-    private List<DayData> dailyData = new ArrayList<>();
+  private Boolean isExternal;
 
-    public Participant() {
-    }
+  private List<DayData> dailyData = new ArrayList<>();
 
-    public String getId() {
-        return id;
-    }
+  public Participant() {
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getId() {
+    return id;
+  }
 
-    public List<DayData> getDailyData() {
-        return dailyData;
-    }
+  public Participant setId(String id) {
+    this.id = id;
+    return this;
+  }
 
-    public Participant setId(String id) {
-        this.id = id;
-        return this;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public Participant setName(String name) {
-        this.name = name;
-        return this;
-    }
+  public Participant setName(String name) {
+    this.name = name;
+    return this;
+  }
 
-    public void setDailyData(List<DayData> dailyData) {
-        this.dailyData = dailyData;
-    }
+  public Boolean getIsExternal() {
+    return isExternal;
+  }
 
-    public ParticipantDto toDto(Participant participant) {
-        return new ParticipantDto(
-                participant.getId(),
-                participant.getName(),
-                participant.getDailyData()
-        );
-    }
+  public void setExternal(Boolean external) {
+    isExternal = external;
+  }
 
-    public ParticipantOverviewDto toOverviewDto(Participant participant) {
-        List<DayDataOverview> dayDataOverviewDtos = participant.getDailyData().stream()
-                .map(dayData -> new DayDataOverview(dayData.getDate(),
-                        dayData.getStatusIndicator(),
-                        dayData.getServices()
-                                .stream().map(service ->
-                                new ServiceOverview(service.getServiceName(), service.getServiceVersion(), service.getDailyMetrics())).toList()
-                )).collect(Collectors.toList());
-        return new ParticipantOverviewDto(
-                participant.getId(),
-                participant.getName(),
-                dayDataOverviewDtos);
-    }
+  public List<DayData> getDailyData() {
+    return dailyData;
+  }
+
+  public void setDailyData(List<DayData> dailyData) {
+    this.dailyData = dailyData;
+  }
+
+  public ParticipantDto toDto(Participant participant) {
+    return new ParticipantDto(
+        participant.getId(),
+        participant.getName(),
+        participant.getDailyData()
+    );
+  }
+
+  public ParticipantOverviewDto toOverviewDto(Participant participant) {
+    List<DayDataOverview> dayDataOverviewDtos = participant.getDailyData().stream()
+        .map(dayData -> new DayDataOverview(dayData.getDate(),
+            dayData.getStatusIndicator(),
+            dayData.getServices()
+                .stream().map(service ->
+                    new ServiceOverview(service.getServiceName(), service.getServiceVersion(), service.getDailyMetrics())).toList()
+        )).collect(Collectors.toList());
+    return new ParticipantOverviewDto(
+        participant.getId(),
+        participant.getName(),
+        participant.getIsExternal(),
+        dayDataOverviewDtos);
+  }
 }
