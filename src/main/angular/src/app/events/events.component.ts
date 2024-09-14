@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {UiLibraryAngularModule} from "@six-group/ui-library-angular";
 import {AsyncPipe, DatePipe, NgForOf, NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
-import {BehaviorSubject, Observable, of, switchMap, withLatestFrom} from 'rxjs';
+import {BehaviorSubject, map, Observable, switchMap} from 'rxjs';
 import {EventService} from "../services/event.service";
 import {EventStatusPillComponent} from "../event-status-pill/event-status-pill.component";
 import {EventTypeBadgeComponent} from "../event-type-badge/event-type-badge.component";
@@ -29,12 +29,12 @@ export class EventsComponent {
 
   constructor(private eventService: EventService) {
     this.events$ = this.filteredEventType$.pipe(
-      withLatestFrom(this.eventService.getEvents()),
-      switchMap(([eventType, events]) => {
-        return eventType != null
-          ? of(events.filter(event => event.eventType === eventType))
-          : of(events);
-      })
+      switchMap(eventType => this.eventService.getEvents().pipe(
+        map((events: Event[]) => eventType != null
+          ? events.filter(event => event.eventType === eventType)
+          : events
+        )
+      ))
     );
   }
 
