@@ -6,6 +6,7 @@ import {BehaviorSubject, map, Observable, switchMap} from 'rxjs';
 import {EventService} from "../services/event.service";
 import {EventStatusPillComponent} from "../event-status-pill/event-status-pill.component";
 import {EventTypeBadgeComponent} from "../event-type-badge/event-type-badge.component";
+import {Event, EventType} from "../model";
 
 @Component({
   selector: 'app-events',
@@ -45,23 +46,3 @@ export class EventsComponent {
   }
 }
 
-export interface Event {
-  id: string;
-  name: string;
-  description?: string;
-  participant?: string;
-  eventType: EventType;
-  eventStatus: EventStatus;
-  start: Date;
-  end: Date | null;
-  affectedServices?: Service[];
-}
-
-export interface Service {
-  id: string;
-  name: string;
-  status: "SUCCESS" | "DEGRADED" | "FAILURE";
-}
-
-export type EventStatus = "SCHEDULED" | "ONGOING" | "FINISHED";
-export type EventType = "MAINTENANCE" | "INCIDENT";

@@ -49,3 +49,24 @@ export interface Participant {
   isExternal: boolean;
   dailyData: DailyData[];
 }
+
+export interface Event {
+    id: string;
+    name: string;
+    description?: string;
+    participant?: string;
+    eventType: EventType;
+    eventStatus: EventStatus;
+    start: Date;
+    end: Date | null;
+    affectedServices?: AffectedService[];
+}
+
+export interface AffectedService {
+    id: string;
+    name: string;
+    status: "SUCCESS" | "DEGRADED" | "FAILURE";
+}
+
+export type EventStatus = "SCHEDULED" | "ONGOING" | "FINISHED";
+export type EventType = "MAINTENANCE" | "INCIDENT";

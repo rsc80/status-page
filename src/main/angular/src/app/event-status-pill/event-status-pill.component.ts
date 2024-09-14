@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {NgSwitch, NgSwitchCase} from "@angular/common";
 import {UiLibraryAngularModule} from "@six-group/ui-library-angular";
-import {EventStatus} from "../events/events.component";
+import {EventStatus} from "../model";
 
 @Component({
   selector: 'app-event-status-pill',

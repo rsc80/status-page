@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {NgSwitch, NgSwitchCase} from "@angular/common";
-import {EventType} from "../events/events.component";
+import {EventType} from "../model";
 
 @Component({
   selector: 'app-event-type-badge',
