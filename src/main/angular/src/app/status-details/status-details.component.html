@@ -3,4 +3,8 @@
     <h1 class="text-3xl">{{ statusItem.id }}: {{ statusItem.status }}</h1>
     <app-status-row [statusRow]="statusRow"></app-status-row>
   </div>
+  <div class="mt-10">
+    <canvas id="MyChart">{{ chart }}</canvas>
+  </div>
+
 </div>

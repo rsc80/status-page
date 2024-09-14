@@ -20,6 +20,8 @@
     "@angular/router": "^18.2.0",
     "@six-group/ui-library": "^4.2.5",
     "@six-group/ui-library-angular": "^4.2.5",
+    "chart.js": "^4.4.4",
+    "dayjs": "^1.11.13",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"

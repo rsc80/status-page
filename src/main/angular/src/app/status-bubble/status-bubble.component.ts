@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
+import {NgClass, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
 import {StatusItem} from "../model";
 
 @Component({
@@ -8,12 +8,14 @@ import {StatusItem} from "../model";
   imports: [
     NgIf,
     NgSwitchCase,
-    NgSwitch
+    NgSwitch,
+    NgClass
   ],
   templateUrl: './status-bubble.component.html',
   styleUrl: './status-bubble.component.scss'
 })
 export class StatusBubbleComponent {
   @Input() statusItem!: StatusItem;
+  @Input() large!: boolean;
 
 }

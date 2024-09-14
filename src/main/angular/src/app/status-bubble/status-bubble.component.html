@@ -1,6 +1,9 @@
 <div [ngSwitch]="statusItem.status" [title]="statusItem.id + ': ' +statusItem.rangeStart"
-     class="transition hover:scale-125 cursor-pointer flex-1 flex">
-  <div *ngSwitchCase="'SUCCESS'" class="flex-1 rounded-full bg-green-600 h-10"></div>
-  <div *ngSwitchCase="'DEGRADED'" class="flex-1 rounded-full bg-orange-500 h-10"></div>
-  <div *ngSwitchCase="'FAILURE'" class="flex-1 rounded-full bg-red-950 h-10"></div>
+     class="transition cursor-pointer flex-1 flex">
+  <div *ngSwitchCase="'SUCCESS'" [ngClass]="{'hover:scale-125 h-10': !large, 'hover:scale-110 h-24':large}"
+       class="flex-1 rounded-full bg-green-600"></div>
+  <div *ngSwitchCase="'DEGRADED'" [ngClass]="{'hover:scale-125 h-10': !large, 'h-24':large}"
+       class="flex-1 rounded-full bg-orange-500"></div>
+  <div *ngSwitchCase="'FAILURE'" [ngClass]="{'hover:scale-125 h-10': !large, 'h-24':large}"
+       class="flex-1 rounded-full bg-red-950"></div>
 </div>
