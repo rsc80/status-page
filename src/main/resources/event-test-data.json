@@ -1,0 +1,38 @@
+[
+  {
+    "id": "I-1",
+    "participant": "bLink",
+    "eventType":  "INCIDENT",
+    "eventStatus": "ONGOING",
+    "start":  "2024-09-03T15:00:00",
+    "end": null,
+    "affectedServices":  ["consent"]
+  },
+  {
+    "id": "I-2",
+    "participant": "bLink",
+    "eventType":  "INCIDENT",
+    "eventStatus": "FINISHED",
+    "start":  "2024-09-03T15:00:00",
+    "end": "2024-09-04T22:00:00",
+    "affectedServices":  ["core"]
+  },
+  {
+    "id": "M-1",
+    "participant": "bLink",
+    "eventType":  "MAINTENANCE",
+    "eventStatus": "SCHEDULED",
+    "start":  "2099-09-03T15:00:00",
+    "end": "2100-09-03T15:00:00",
+    "affectedServices":  ["core","consent"]
+  },
+  {
+    "id": "M-2",
+    "participant": "bLink",
+    "eventType":  "MAINTENANCE",
+    "eventStatus": "FINISHED",
+    "start":  "2014-09-03T15:00:00",
+    "end": "2014-09-03T15:00:01",
+    "affectedServices":  ["core"]
+  }
+]

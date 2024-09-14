@@ -1,10 +1,10 @@
-package com.six_group.statuspageapp.domain.mapper;
+package com.six_group.statuspageapp.domain.event.mapper;
 
 
 import com.six_group.statuspageapp.api.dto.EventDto;
-import com.six_group.statuspageapp.domain.Event;
-import com.six_group.statuspageapp.domain.EventStatus;
-import com.six_group.statuspageapp.domain.EventType;
+import com.six_group.statuspageapp.domain.event.Event;
+import com.six_group.statuspageapp.domain.event.EventStatus;
+import com.six_group.statuspageapp.domain.event.EventType;
 
 public final class EventMapper {
 

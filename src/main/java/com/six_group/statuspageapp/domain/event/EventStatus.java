@@ -1,4 +1,4 @@
-package com.six_group.statuspageapp.domain;
+package com.six_group.statuspageapp.domain.event;
 
 public enum EventStatus {
   SCHEDULED,
