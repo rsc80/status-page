@@ -1,7 +1,7 @@
-import {Component, Input, OnChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy} from '@angular/core';
 import {JsonPipe, NgForOf} from "@angular/common";
 import {Chart} from "chart.js/auto";
-import {Participant, Service} from "../model";
+import {DailyData, Service} from "../model";
 
 @Component({
   selector: 'app-charts',
@@ -13,24 +13,28 @@ import {Participant, Service} from "../model";
   templateUrl: './charts.component.html',
   styleUrl: './charts.component.scss'
 })
-export class ChartsComponent implements OnChanges {
+export class ChartsComponent implements OnChanges, OnDestroy {
 
   @Input() containers!: string[];
-  @Input() participant!: Participant | null;
-  protected charts: Chart[] = [];
+  @Input() dailyData!: DailyData | null;
   protected services: Service[] = [];
+  protected charts: { [key: string]: Chart } = {};
 
   getChart(service: Service) {
-    return this.createChart(service)
+    return this.charts[service.serviceName] || this.createChart(service)
   }
 
   getCanvasId(service: Service): string {
     return `chart-${service.serviceName}`;
   }
 
+  ngOnDestroy(): void {
+    Object.keys(this.charts).forEach(serviceName => this.charts[serviceName].destroy());
+  }
+
   ngOnChanges(): void {
-    if (this.participant) {
-      this.services = this.participant.dailyData[0] && this.participant.dailyData[0].services || [];
+    if (this.dailyData) {
+      this.services = this.dailyData && this.dailyData.services || [];
     }
   }
 
@@ -54,9 +58,8 @@ export class ChartsComponent implements OnChanges {
     });
 
     let canvasId = this.getCanvasId(service);
-    console.log("chartId", canvasId);
 
-    return new Chart(canvasId, {
+    let chart = new Chart(canvasId, {
       type: 'bar',
 
       data: {
@@ -85,6 +88,8 @@ export class ChartsComponent implements OnChanges {
         }
       }
     });
+    this.charts[service.serviceName] = chart;
+    return chart;
   }
 
 }

@@ -40,7 +40,6 @@ export class StatusComponent {
   }
 
   onClickStatusBubble(statusItem: StatusItem) {
-    console.log("click", statusItem);
     // noinspection JSIgnoredPromiseFromCall
     this.router.navigate(["status", statusItem.participantId, statusItem.id]);
   }
