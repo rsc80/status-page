@@ -15,5 +15,8 @@
                        [statusItem]="statusItem"
                        class="flex-1"></app-status-bubble>
   </div>
-  <div>{{ statusRow.items[0].rangeStart|date:"dd.MM.YYYY" }}</div>
+  <div class="flex justify-between">
+    <div>{{ statusRow.items[0].rangeStart|date:"dd.MM.YYYY" }}</div>
+    <div>today</div>
+  </div>
 </div>
