@@ -1,6 +1,21 @@
 <div class="container xl:px-52 mx-auto">
   <h1 class="text-3xl mt-10">Events</h1>
 
+  <div class="flex flex-row gap-4 mt-4">
+    <six-badge [type]="filteredEventType$.value === 'Maintenance' ? 'info' : 'primary'"
+               (click)="filterEventType('Maintenance')"
+               pill
+               class="cursor-pointer">
+      <app-event-type-badge type="Maintenance" class="p-1"></app-event-type-badge>
+    </six-badge>
+    <six-badge [type]="filteredEventType$.value === 'Incident' ? 'info' : 'primary'"
+               (click)="filterEventType('Incident')"
+               pill
+               class="cursor-pointer">
+      <app-event-type-badge type="Incident" class="p-1"></app-event-type-badge>
+    </six-badge>
+  </div>
+
   <six-card class="w-full p-0 mt-4">
     <div *ngFor="let event of events$ | async"
          [routerLink]="event.id"
@@ -11,6 +26,7 @@
       <span>{{event.end | date}}</span>
       <app-event-status-pill [status]="event.eventStatus" class="ml-auto"></app-event-status-pill>
     </div>
+
     <div *ngFor="let event of events$ | async"
          [routerLink]="event.id"
          class="md:hidden flex flex-col p-4 cursor-pointer hover:bg-gray-100">
@@ -30,14 +46,4 @@
     </div>
   </six-card>
 
-  <!--  <six-card class="w-full p-0 mt-4">-->
-  <!--    <div *ngFor="let event of events$ | async" [routerLink]="event.id"-->
-  <!--         class="grid grid-flow-col auto-cols-max gap-2 p-2 cursor-pointer hover:bg-gray-100">-->
-  <!--      <span class="w-full">{{event.name}}</span>-->
-  <!--      <span>{{event.type}}</span>-->
-  <!--      <span>{{event.startDate | date}}</span>-->
-  <!--      <span>{{event.endDate | date}}</span>-->
-  <!--      <app-event-status-pill [status]="event.status" class="ml-auto"></app-event-status-pill>-->
-  <!--    </div>-->
-  <!--  </six-card>-->
 </div>
