@@ -50,7 +50,7 @@ export class ChartsComponent implements OnChanges, OnDestroy {
       };
     }
 
-    let labels = Object.keys(service.hours);
+    let labels = Object.keys(service.hours).sort((a, b) => a < b ? -1 : 1);
     let hoursSuccess = labels.map(hour => {
       const hourForChart = extract(service, hour);
       return hourForChart.hourData.successCount / hourForChart.total;
