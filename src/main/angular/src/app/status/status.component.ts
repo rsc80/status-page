@@ -4,7 +4,7 @@ import {StatusBubbleComponent} from "../status-bubble/status-bubble.component";
 import {AsyncPipe, CommonModule, NgForOf} from "@angular/common";
 import {Router} from "@angular/router";
 import {StatusRowComponent} from "../status-row/status-row.component";
-import {Participant, StatusItem, StatusRow} from "../model";
+import {DailyData, Participant, StatusItem, StatusRow} from "../model";
 import {StatusService} from "../services/status.service";
 import {map, Observable} from "rxjs";
 import dayjs from "dayjs";
@@ -43,18 +43,18 @@ export class StatusComponent {
     return (p: Participant) => {
       return {
         service: p.name,
-        items: [...items.map(i => this.toStatusItems(i, p))],
+        items: [...items.map(item => this.toStatusItems(item, p.dailyData))],
         resolutionMinutes: 60
       } as StatusRow;
     };
   }
 
-  private toStatusItems(emptyStatusItem: StatusItem, p: Participant) {
-    let dailyData = p.dailyData.filter(d => dayjs(d.date).isSame(dayjs(emptyStatusItem.rangeStart), "day"))[0];
-    return dailyData && {
-      status: this.mapStatus(dailyData.statusIndicator),
-      id: dailyData.date,
-      rangeStart: dayjs(dailyData.date).toDate()
+  private toStatusItems(emptyStatusItem: StatusItem, dailyData: DailyData[]) {
+    let enrichedDailyData = dailyData.filter(d => dayjs(d.date).isSame(dayjs(emptyStatusItem.rangeStart), "day"))[0];
+    return enrichedDailyData && {
+      status: this.mapStatus(enrichedDailyData.statusIndicator),
+      id: enrichedDailyData.date,
+      rangeStart: dayjs(enrichedDailyData.date).toDate()
     } || emptyStatusItem;
   }
 
