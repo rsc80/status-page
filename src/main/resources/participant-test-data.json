@@ -5,10 +5,10 @@
     "dailyData": [
       {
         "date": "2024-09-01",
-        "apis": [
+        "services": [
           {
-            "apiName": "AIS",
-            "apiVersion": "v3",
+            "serviceName": "AIS",
+            "serviceVersion": "v3",
             "dailyMetrics": {},
             "hours": {
               "00:00": { "successCount": 90, "clientErrorCount": 5, "serverErrorCount": 5 },
@@ -17,8 +17,8 @@
             }
           },
           {
-            "apiName": "PSS",
-            "apiVersion": "v3",
+            "serviceName": "PSS",
+            "serviceVersion": "v3",
             "dailyMetrics": {},
             "hours": {
               "00:00": { "successCount": 100, "clientErrorCount": 10, "serverErrorCount": 10 },
@@ -30,10 +30,10 @@
       },
       {
         "date": "2024-09-02",
-        "apis": [
+        "services": [
           {
-            "apiName": "AIS",
-            "apiVersion": "v3",
+            "serviceName": "AIS",
+            "serviceVersion": "v3",
             "dailyMetrics": {},
             "hours": {
               "00:00": { "successCount": 100, "clientErrorCount": 5, "serverErrorCount": 5 },
@@ -42,8 +42,8 @@
             }
           },
           {
-            "apiName": "PSS",
-            "apiVersion": "v3",
+            "serviceName": "PSS",
+            "serviceVersion": "v3",
             "dailyMetrics": {},
             "hours": {
               "00:00": { "successCount": 110, "clientErrorCount": 10, "serverErrorCount": 10 },
@@ -61,10 +61,10 @@
     "dailyData": [
       {
         "date": "2024-09-01",
-        "apis": [
+        "services": [
           {
-            "apiName": "AIS",
-            "apiVersion": "v3",
+            "serviceName": "AIS",
+            "serviceVersion": "v3",
             "dailyMetrics": {},
             "hours": {
               "00:00": { "successCount": 120, "clientErrorCount": 5, "serverErrorCount": 5 },
@@ -73,8 +73,8 @@
             }
           },
           {
-            "apiName": "PSS",
-            "apiVersion": "v3",
+            "serviceName": "PSS",
+            "serviceVersion": "v3",
             "dailyMetrics": {},
             "hours": {
               "00:00": { "successCount": 140, "clientErrorCount": 10, "serverErrorCount": 10 },
@@ -86,10 +86,10 @@
       },
       {
         "date": "2024-09-02",
-        "apis": [
+        "services": [
           {
-            "apiName": "AIS",
-            "apiVersion": "v3",
+            "serviceName": "AIS",
+            "serviceVersion": "v3",
             "dailyMetrics": {},
             "hours": {
               "00:00": { "successCount": 110, "clientErrorCount": 5, "serverErrorCount": 5 },
@@ -98,8 +98,8 @@
             }
           },
           {
-            "apiName": "PSS",
-            "apiVersion": "v3",
+            "serviceName": "PSS",
+            "serviceVersion": "v3",
             "dailyMetrics": {
             },
             "hours": {
@@ -118,10 +118,10 @@
     "dailyData": [
       {
         "date": "2024-09-01",
-        "apis": [
+        "services": [
           {
-            "apiName": "AIS",
-            "apiVersion": "v3",
+            "serviceName": "AIS",
+            "serviceVersion": "v3",
             "dailyMetrics": {},
             "hours": {
               "00:00": { "successCount": 130, "clientErrorCount": 5, "serverErrorCount": 5 },
@@ -130,8 +130,8 @@
             }
           },
           {
-            "apiName": "PSS",
-            "apiVersion": "v3",
+            "serviceName": "PSS",
+            "serviceVersion": "v3",
             "dailyMetrics": {},
             "hours": {
               "00:00": { "successCount": 140, "clientErrorCount": 10, "serverErrorCount": 10 },
@@ -143,10 +143,10 @@
       },
       {
         "date": "2024-09-02",
-        "apis": [
+        "services": [
           {
-            "apiName": "AIS",
-            "apiVersion": "v3",
+            "serviceName": "AIS",
+            "serviceVersion": "v3",
             "dailyMetrics": {},
             "hours": {
               "00:00": { "successCount": 120, "clientErrorCount": 5, "serverErrorCount": 5 },
@@ -155,8 +155,8 @@
             }
           },
           {
-            "apiName": "PSS",
-            "apiVersion": "v3",
+            "serviceName": "PSS",
+            "serviceVersion": "v3",
             "dailyMetrics": {},
             "hours": {
               "00:00": { "successCount": 130, "clientErrorCount": 10, "serverErrorCount": 10 },

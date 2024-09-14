@@ -11,43 +11,39 @@ public class DayData {
 
     private StatusIndicator statusIndicator;
 
-    private List<Api> apis = new ArrayList<Api>();
+    private List<Service> services = new ArrayList<Service>();
 
     public DayData() {
 
     }
 
-
-    public DayData(String date, StatusIndicator statusIndicator, List<Api> apis) {
+    public DayData(String date, StatusIndicator statusIndicator, List<Service> services) {
         this.date = date;
         this.statusIndicator = statusIndicator;
-        this.apis = apis;
+        this.services = services;
     }
 
     public String getDate() {
         return date;
     }
 
-    public DayData setDate(String date) {
+    public void setDate(String date) {
         this.date = date;
-        return this;
     }
 
     public StatusIndicator getStatusIndicator() {
         return statusIndicator;
     }
 
-    public DayData setStatusIndicator(StatusIndicator statusIndicator) {
+    public void setStatusIndicator(StatusIndicator statusIndicator) {
         this.statusIndicator = statusIndicator;
-        return this;
     }
 
-    public List<Api> getApis() {
-        return apis;
+    public List<Service> getServices() {
+        return services;
     }
 
-    public DayData setApis(List<Api> apis) {
-        this.apis = apis;
-        return this;
+    public void setServices(List<Service> services) {
+        this.services = services;
     }
 }

@@ -5,11 +5,10 @@ import com.six_group.statuspageapp.api.dto.ParticipantDto;
 import com.six_group.statuspageapp.api.dto.StatusIndicator;
 import com.six_group.statuspageapp.domain.participant.*;
 import com.six_group.statuspageapp.persistence.ParticipantRepository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@org.springframework.stereotype.Service
 public class ParticipantService {
 
     private final ParticipantRepository participantRepository;
@@ -47,31 +46,35 @@ public class ParticipantService {
     }
 
     private DayData aggregateDailyMetrics(DayData dayData) {
-        int totalRequests = 0;
-        int totalSuccessCount = 0;
-        int totalClientErrorCount = 0;
-        int totalServerErrorCount = 0;
+        int totalRequests;
+        int totalSuccessCount;
+        int totalClientErrorCount;
+        int totalServerErrorCount;
 
-        for (Api api : dayData.getApis()) {
-            for (HourlyMetrics hourlyMetrics : api.getHours().values()){
+        for (Service service : dayData.getServices()) {
+            totalRequests = 0;
+            totalSuccessCount = 0;
+            totalClientErrorCount = 0;
+            totalServerErrorCount = 0;
+            for (HourlyMetrics hourlyMetrics : service.getHours().values()){
             totalSuccessCount += hourlyMetrics.getSuccessCount();
             totalClientErrorCount += hourlyMetrics.getClientErrorCount();
             totalServerErrorCount += hourlyMetrics.getServerErrorCount();
             totalRequests = totalSuccessCount + totalClientErrorCount + totalServerErrorCount;
             }
-            buildDailyMetrics(api, totalRequests, totalSuccessCount, totalClientErrorCount, totalServerErrorCount);
+            buildDailyMetrics(service, totalRequests, totalSuccessCount, totalClientErrorCount, totalServerErrorCount);
             calculateStatusIndicator(dayData, totalServerErrorCount, totalRequests);
         }
         return dayData;
     }
 
-    private static void buildDailyMetrics(Api api, int totalRequests, int totalSuccessCount, int totalClientErrorCount, int totalServerErrorCount) {
+    private static void buildDailyMetrics(Service service, int totalRequests, int totalSuccessCount, int totalClientErrorCount, int totalServerErrorCount) {
         DailyMetrics dailyMetrics = new DailyMetrics();
         dailyMetrics.setTotalRequests(totalRequests);
         dailyMetrics.setTotalSuccessCount(totalSuccessCount);
         dailyMetrics.setTotalClientErrorCount(totalClientErrorCount);
         dailyMetrics.setTotalServerErrorCount(totalServerErrorCount);
-        api.setDailyMetrics(dailyMetrics);
+        service.setDailyMetrics(dailyMetrics);
     }
 
     private static void calculateStatusIndicator(DayData dayData, double totalServerErrorCount, int totalRequests) {
