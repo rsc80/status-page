@@ -1,6 +1,6 @@
 export interface StatusItem {
     id: string,
-    status: "SUCCESS" | "DEGRADED" | "FAILURE";
+    status: "SUCCESS" | "DEGRADED" | "FAILURE" | "NO_DATA";
     rangeStart: Date;
 }
 

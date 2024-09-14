@@ -4,7 +4,7 @@ import {StatusBubbleComponent} from "../status-bubble/status-bubble.component";
 import {AsyncPipe, CommonModule, NgForOf} from "@angular/common";
 import {Router} from "@angular/router";
 import {StatusRowComponent} from "../status-row/status-row.component";
-import {DailyData, StatusItem, StatusRow} from "../model";
+import {Participant, StatusItem, StatusRow} from "../model";
 import {StatusService} from "../services/status.service";
 import {map, Observable} from "rxjs";
 import dayjs from "dayjs";
@@ -25,13 +25,13 @@ export class StatusComponent {
               @Inject(StatusService) private statusService: StatusService) {
     let items: StatusItem[] = [];
     for (let i = 0; i <= 60; i++) {
-      items.push({id: '' + i, status: "SUCCESS", rangeStart: new Date()});
+      items.push({id: '' + i, status: "NO_DATA", rangeStart: dayjs().subtract(60 - i, "days").toDate()});
     }
     this.statusRows$ = this.statusService.getParticipants().pipe(map(p => {
       return p.map(p => {
         return {
           service: p.name,
-          items: p.dailyData.map(this.toItem),
+          items: [...items.map(i => this.toStatusItems(i, p))],
           resolutionMinutes: 60
         } as StatusRow;
       })
@@ -44,26 +44,32 @@ export class StatusComponent {
     this.router.navigate(["status", bubble.id]);
   }
 
-  private toItem(dailyData: DailyData): StatusItem {
-    function mapStatus(statusIndicator: "WARNING" | "SUCCESS"): "SUCCESS" | "DEGRADED" | "FAILURE" {
-      switch (statusIndicator) {
-        case "SUCCESS": {
-          return "SUCCESS";
-        }
-        case "WARNING": {
-          return "DEGRADED"
-        }
-        default: {
-          return "DEGRADED"
-        }
-      }
-    }
-
-    return {
-      status: mapStatus(dailyData.statusIndicator),
+  private toStatusItems(emptyStatusItem: StatusItem, p: Participant) {
+    let dailyData = p.dailyData.filter(d => {
+      console.log("emptyStatusItem.rangeStart", emptyStatusItem.rangeStart);
+      let isSame = dayjs(d.date).isSame(dayjs(emptyStatusItem.rangeStart), "day");
+      return isSame;
+    })[0];
+    return dailyData && {
+      status: this.mapStatus(dailyData.statusIndicator),
       id: dailyData.date,
       rangeStart: dayjs(dailyData.date).toDate()
+    } || emptyStatusItem;
+  }
+
+  private mapStatus(statusIndicator: "WARNING" | "SUCCESS"): "SUCCESS" | "DEGRADED" | "FAILURE" {
+    switch (statusIndicator) {
+      case "SUCCESS": {
+        return "SUCCESS";
+      }
+      case "WARNING": {
+        return "DEGRADED"
+      }
+      default: {
+        return "DEGRADED"
+      }
     }
   }
+
 }
 

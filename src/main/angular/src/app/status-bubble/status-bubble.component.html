@@ -6,4 +6,6 @@
        class="flex-1 rounded-full bg-orange-500"></div>
   <div *ngSwitchCase="'FAILURE'" [ngClass]="{'hover:scale-125 h-10': !large, 'h-24':large}"
        class="flex-1 rounded-full bg-red-950"></div>
+  <div *ngSwitchCase="'NO_DATA'" [ngClass]="{'hover:scale-125 h-10': !large, 'h-24':large}"
+       class="flex-1 rounded-full bg-gray-400"></div>
 </div>
