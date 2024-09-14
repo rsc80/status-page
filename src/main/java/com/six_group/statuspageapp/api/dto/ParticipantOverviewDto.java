@@ -8,7 +8,7 @@ public record ParticipantOverviewDto(
     String id,
     String name,
     Boolean isExternal,
-    StatusIndicator statusIndicator,
+    StatusLine statusLine,
     List<DayDataOverview> dailyData
 ) {
 
