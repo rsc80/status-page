@@ -42,8 +42,17 @@ public class ParticipantService {
                 .toList();
     }
 
-    public ParticipantDto getParticipantById(String id) {
-        return null;
+    public DayData getParticipantByIdAndHour(String id, String day) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        InputStream inputStream = new ClassPathResource("participant-test-data.json").getInputStream();
+        List<Participant> participants = objectMapper.readValue(inputStream, new TypeReference<>() {});
+
+        Participant participant = participants.stream()
+                .filter(p -> id.equals(p.getId()))
+                .findFirst().orElseThrow(RuntimeException::new);
+        return this.aggregateDailyMetricsForParticipant(participant).getDailyData().stream().filter(dayData -> dayData.getDate().equals(day)).findFirst().orElseThrow(RuntimeException::new);
+
+
     }
 
     private Participant aggregateDailyMetricsForParticipant(Participant participant) {

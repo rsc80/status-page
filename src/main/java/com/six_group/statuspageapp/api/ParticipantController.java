@@ -4,6 +4,7 @@ package com.six_group.statuspageapp.api;
 import com.six_group.statuspageapp.api.dto.ParticipantDto;
 import com.six_group.statuspageapp.api.dto.ParticipantOverviewDto;
 import com.six_group.statuspageapp.domain.ParticipantService;
+import com.six_group.statuspageapp.domain.participant.DayData;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -30,8 +31,8 @@ public class ParticipantController {
     return this.participantService.getParticipantOverview();
   }
 
-  @GetMapping("/participants/{id}")
-  public ParticipantDto getParticipantById(@PathVariable String id) {
-    return this.participantService.getParticipantById(id);
+  @GetMapping("/participants/{id}/{day}")
+  public DayData getParticipantById(@PathVariable String id, @PathVariable String day) throws IOException {
+    return this.participantService.getParticipantByIdAndHour(id, day);
   }
 }
