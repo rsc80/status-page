@@ -3,18 +3,18 @@
     <div>
       <h1 class="text-3xl mt-0 mb-2 sm:mb-0">{{event.name}}</h1>
 
-      <app-event-type-badge [type]="event.type"></app-event-type-badge>
+      <app-event-type-badge [type]="event.eventType"></app-event-type-badge>
     </div>
-    <app-event-status-pill [status]="event.status"></app-event-status-pill>
+    <app-event-status-pill [status]="event.eventStatus"></app-event-status-pill>
   </div>
 
   <div class="flex flex-col sm:flex-row justify-between sm:items-center mt-8">
     <div class="flex sm:block flex-row-reverse justify-end gap-2">
-      <div>{{event.startDate | date}}</div>
+      <div>{{event.start | date}}</div>
       <span class="text-gray-500">Start Date</span>
     </div>
     <div class="flex sm:block flex-row-reverse justify-end gap-2">
-      <div>{{event.endDate | date}}</div>
+      <div>{{event.end | date}}</div>
       <span class="flex sm:justify-end text-gray-500">End Date</span>
     </div>
   </div>

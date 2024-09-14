@@ -34,10 +34,11 @@ export interface Event {
   id: string;
   name: string;
   description?: string;
-  type: EventType;
-  status: EventStatus;
-  startDate: Date;
-  endDate: Date | null;
+  participant?: string;
+  eventType: EventType;
+  eventStatus: EventStatus;
+  start: Date;
+  end: Date | null;
   affectedServices?: Service[];
 }
 
