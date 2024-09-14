@@ -47,7 +47,7 @@ public class ParticipantController {
   public void postParticipantById(@PathVariable String id, @PathVariable String serviceName, @PathVariable String serviceVersion, HourlyMetrics  hourlyMetrics) {
     var participant = StatusPageAppApplication.PARTICIPANT_MAP.get(id);
     var date = LocalDate.now().toString();
-    var hour = "%02d".formatted(LocalDateTime.now().getHour()) + ":00";
+    var hour = "%02d:00".formatted(LocalDateTime.now().getHour());
     participant.getDailyData().stream().filter(v -> v.getDate().equals(date))
             .map(DayData::getServices)
             .flatMap(List::stream)
