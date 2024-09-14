@@ -1,11 +1,11 @@
 <div [ngSwitch]="statusItem.status" [title]="statusItem.id + ': ' +statusItem.rangeStart"
-     class="transition cursor-pointer flex-1 flex border">
+     class="transition cursor-pointer flex-1 flex">
   <div *ngSwitchCase="'SUCCESS'" [ngClass]="{'hover:scale-125 h-10': !large, 'hover:scale-110 h-24':large}"
-       class="flex-1 rounded-full bg-green-600 border-gray-700"></div>
+       class="flex-1 rounded-full bg-green-300 border border-green-500"></div>
   <div *ngSwitchCase="'DEGRADED'" [ngClass]="{'hover:scale-125 h-10': !large, 'h-24':large}"
-       class="flex-1 rounded-full bg-orange-500 border-gray-700"></div>
+       class="flex-1 rounded-full bg-orange-300 border border-orange-500"></div>
   <div *ngSwitchCase="'FAILURE'" [ngClass]="{'hover:scale-125 h-10': !large, 'h-24':large}"
-       class="flex-1 rounded-full bg-red-950 border-gray-700"></div>
+       class="flex-1 rounded-full bg-red-400 border border-red-600"></div>
   <div *ngSwitchCase="'NO_DATA'" [ngClass]="{'hover:scale-125 h-10': !large, 'h-24':large}"
-       class="flex-1 rounded-full bg-gray-400"></div>
+       class="flex-1 rounded-full bg-gray-300 border border-gray-400"></div>
 </div>

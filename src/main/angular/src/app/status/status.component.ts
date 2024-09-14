@@ -69,13 +69,16 @@ export class StatusComponent {
     };
   }
 
-  private mapStatus(statusIndicator: "WARNING" | "SUCCESS"): "SUCCESS" | "DEGRADED" | "FAILURE" {
+  private mapStatus(statusIndicator: "WARNING" | "SUCCESS" | "DANGER"): "SUCCESS" | "DEGRADED" | "FAILURE" {
     switch (statusIndicator) {
       case "SUCCESS": {
         return "SUCCESS";
       }
       case "WARNING": {
         return "DEGRADED"
+      }
+      case "DANGER": {
+        return "FAILURE"
       }
       default: {
         return "DEGRADED"

@@ -70,11 +70,17 @@ export class ChartsComponent implements OnChanges, OnDestroy {
         datasets: [{
           label: '% Success',
           data: hoursSuccess,
-          backgroundColor: 'rgb(75, 192, 75)',
+          backgroundColor: 'rgba(134 239 172 / 0.5)',
+          borderColor: 'rgba(60, 150, 60,1)',
+          borderWidth: 1,
+          borderRadius: 3
         }, {
           label: '% Failed',
           data: hoursFailures,
-          backgroundColor: 'rgb(192, 75, 75)',
+          backgroundColor: 'rgba(248, 113, 113,0.5)',
+          borderColor: 'rgba(150, 60, 60,1)',
+          borderWidth: 1,
+          borderRadius: 3
         }]
       },
       options: {
