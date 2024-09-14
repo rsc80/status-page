@@ -1,0 +1,380 @@
+[
+  {
+    "id": "1",
+    "name": "Cembalo Bank 1",
+    "dailyData": [
+      {
+        "date": "2024-09-01",
+        "statusIndicator": "WARNING",
+        "services": [
+          {
+            "serviceName": "AIS",
+            "serviceVersion": "v3",
+            "dailyMetrics": {
+              "totalRequests": 300,
+              "totalSuccessCount": 270,
+              "totalClientErrorCount": 15,
+              "totalServerErrorCount": 15
+            },
+            "hours": {
+              "00:00": {
+                "successCount": 90,
+                "clientErrorCount": 5,
+                "serverErrorCount": 5
+              },
+              "01:00": {
+                "successCount": 110,
+                "clientErrorCount": 5,
+                "serverErrorCount": 5
+              },
+              "02:00": {
+                "successCount": 70,
+                "clientErrorCount": 5,
+                "serverErrorCount": 5
+              }
+            }
+          },
+          {
+            "serviceName": "PSS",
+            "serviceVersion": "v3",
+            "dailyMetrics": {
+              "totalRequests": 360,
+              "totalSuccessCount": 300,
+              "totalClientErrorCount": 30,
+              "totalServerErrorCount": 30
+            },
+            "hours": {
+              "00:00": {
+                "successCount": 100,
+                "clientErrorCount": 10,
+                "serverErrorCount": 10
+              },
+              "01:00": {
+                "successCount": 120,
+                "clientErrorCount": 10,
+                "serverErrorCount": 10
+              },
+              "02:00": {
+                "successCount": 80,
+                "clientErrorCount": 10,
+                "serverErrorCount": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "date": "2024-09-02",
+        "statusIndicator": "WARNING",
+        "services": [
+          {
+            "serviceName": "AIS",
+            "serviceVersion": "v3",
+            "dailyMetrics": {
+              "totalRequests": 330,
+              "totalSuccessCount": 300,
+              "totalClientErrorCount": 15,
+              "totalServerErrorCount": 15
+            },
+            "hours": {
+              "00:00": {
+                "successCount": 100,
+                "clientErrorCount": 5,
+                "serverErrorCount": 5
+              },
+              "01:00": {
+                "successCount": 120,
+                "clientErrorCount": 5,
+                "serverErrorCount": 5
+              },
+              "02:00": {
+                "successCount": 80,
+                "clientErrorCount": 5,
+                "serverErrorCount": 5
+              }
+            }
+          },
+          {
+            "serviceName": "PSS",
+            "serviceVersion": "v3",
+            "dailyMetrics": {
+              "totalRequests": 390,
+              "totalSuccessCount": 330,
+              "totalClientErrorCount": 30,
+              "totalServerErrorCount": 30
+            },
+            "hours": {
+              "00:00": {
+                "successCount": 110,
+                "clientErrorCount": 10,
+                "serverErrorCount": 10
+              },
+              "01:00": {
+                "successCount": 130,
+                "clientErrorCount": 10,
+                "serverErrorCount": 10
+              },
+              "02:00": {
+                "successCount": 90,
+                "clientErrorCount": 10,
+                "serverErrorCount": 10
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Cembalo Bank 2",
+    "dailyData": [
+      {
+        "date": "2024-09-01",
+        "statusIndicator": "WARNING",
+        "services": [
+          {
+            "serviceName": "AIS",
+            "serviceVersion": "v3",
+            "dailyMetrics": {
+              "totalRequests": 360,
+              "totalSuccessCount": 330,
+              "totalClientErrorCount": 15,
+              "totalServerErrorCount": 15
+            },
+            "hours": {
+              "00:00": {
+                "successCount": 120,
+                "clientErrorCount": 5,
+                "serverErrorCount": 5
+              },
+              "01:00": {
+                "successCount": 130,
+                "clientErrorCount": 5,
+                "serverErrorCount": 5
+              },
+              "02:00": {
+                "successCount": 80,
+                "clientErrorCount": 5,
+                "serverErrorCount": 5
+              }
+            }
+          },
+          {
+            "serviceName": "PSS",
+            "serviceVersion": "v3",
+            "dailyMetrics": {
+              "totalRequests": 440,
+              "totalSuccessCount": 380,
+              "totalClientErrorCount": 30,
+              "totalServerErrorCount": 30
+            },
+            "hours": {
+              "00:00": {
+                "successCount": 140,
+                "clientErrorCount": 10,
+                "serverErrorCount": 10
+              },
+              "01:00": {
+                "successCount": 150,
+                "clientErrorCount": 10,
+                "serverErrorCount": 10
+              },
+              "02:00": {
+                "successCount": 90,
+                "clientErrorCount": 10,
+                "serverErrorCount": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "date": "2024-09-02",
+        "statusIndicator": "WARNING",
+        "services": [
+          {
+            "serviceName": "AIS",
+            "serviceVersion": "v3",
+            "dailyMetrics": {
+              "totalRequests": 370,
+              "totalSuccessCount": 340,
+              "totalClientErrorCount": 15,
+              "totalServerErrorCount": 15
+            },
+            "hours": {
+              "00:00": {
+                "successCount": 110,
+                "clientErrorCount": 5,
+                "serverErrorCount": 5
+              },
+              "01:00": {
+                "successCount": 140,
+                "clientErrorCount": 5,
+                "serverErrorCount": 5
+              },
+              "02:00": {
+                "successCount": 90,
+                "clientErrorCount": 5,
+                "serverErrorCount": 5
+              }
+            }
+          },
+          {
+            "serviceName": "PSS",
+            "serviceVersion": "v3",
+            "dailyMetrics": {
+              "totalRequests": 470,
+              "totalSuccessCount": 410,
+              "totalClientErrorCount": 30,
+              "totalServerErrorCount": 30
+            },
+            "hours": {
+              "00:00": {
+                "successCount": 150,
+                "clientErrorCount": 10,
+                "serverErrorCount": 10
+              },
+              "01:00": {
+                "successCount": 160,
+                "clientErrorCount": 10,
+                "serverErrorCount": 10
+              },
+              "02:00": {
+                "successCount": 100,
+                "clientErrorCount": 10,
+                "serverErrorCount": 10
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Cembalo Bank 3",
+    "dailyData": [
+      {
+        "date": "2024-09-01",
+        "statusIndicator": "WARNING",
+        "services": [
+          {
+            "serviceName": "AIS",
+            "serviceVersion": "v3",
+            "dailyMetrics": {
+              "totalRequests": 410,
+              "totalSuccessCount": 380,
+              "totalClientErrorCount": 15,
+              "totalServerErrorCount": 15
+            },
+            "hours": {
+              "00:00": {
+                "successCount": 130,
+                "clientErrorCount": 5,
+                "serverErrorCount": 5
+              },
+              "01:00": {
+                "successCount": 140,
+                "clientErrorCount": 5,
+                "serverErrorCount": 5
+              },
+              "02:00": {
+                "successCount": 110,
+                "clientErrorCount": 5,
+                "serverErrorCount": 5
+              }
+            }
+          },
+          {
+            "serviceName": "PSS",
+            "serviceVersion": "v3",
+            "dailyMetrics": {
+              "totalRequests": 460,
+              "totalSuccessCount": 400,
+              "totalClientErrorCount": 30,
+              "totalServerErrorCount": 30
+            },
+            "hours": {
+              "00:00": {
+                "successCount": 140,
+                "clientErrorCount": 10,
+                "serverErrorCount": 10
+              },
+              "01:00": {
+                "successCount": 150,
+                "clientErrorCount": 10,
+                "serverErrorCount": 10
+              },
+              "02:00": {
+                "successCount": 110,
+                "clientErrorCount": 10,
+                "serverErrorCount": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "date": "2024-09-02",
+        "statusIndicator": "WARNING",
+        "services": [
+          {
+            "serviceName": "AIS",
+            "serviceVersion": "v3",
+            "dailyMetrics": {
+              "totalRequests": 400,
+              "totalSuccessCount": 370,
+              "totalClientErrorCount": 15,
+              "totalServerErrorCount": 15
+            },
+            "hours": {
+              "00:00": {
+                "successCount": 120,
+                "clientErrorCount": 5,
+                "serverErrorCount": 5
+              },
+              "01:00": {
+                "successCount": 150,
+                "clientErrorCount": 5,
+                "serverErrorCount": 5
+              },
+              "02:00": {
+                "successCount": 100,
+                "clientErrorCount": 5,
+                "serverErrorCount": 5
+              }
+            }
+          },
+          {
+            "serviceName": "PSS",
+            "serviceVersion": "v3",
+            "dailyMetrics": {
+              "totalRequests": 460,
+              "totalSuccessCount": 400,
+              "totalClientErrorCount": 30,
+              "totalServerErrorCount": 30
+            },
+            "hours": {
+              "00:00": {
+                "successCount": 130,
+                "clientErrorCount": 10,
+                "serverErrorCount": 10
+              },
+              "01:00": {
+                "successCount": 160,
+                "clientErrorCount": 10,
+                "serverErrorCount": 10
+              },
+              "02:00": {
+                "successCount": 110,
+                "clientErrorCount": 10,
+                "serverErrorCount": 10
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
