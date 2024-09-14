@@ -3,6 +3,8 @@
   "participant": "bLink",
   "eventType": "INCIDENT",
   "eventStatus": "ONGOING",
+  "title": "SIX Gateway Outage",
+  "description": "No traffic can be ingested by SIX",
   "start": "2024-09-03T15:00:00",
   "end": null,
   "affectedServices": [

@@ -32,7 +32,7 @@ public final class AffectedServiceMapper {
   private static AffectedServiceDto toDto(AffectedService affectedService) {
     return new AffectedServiceDto(
         affectedService.name(),
-        affectedService.name()
+        affectedService.serviceStatus().name()
     );
   }
 }

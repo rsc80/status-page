@@ -16,6 +16,8 @@ public final class EventMapper {
         eventDto.participant(),
         EventType.valueOf(eventDto.eventType()),
         EventStatus.valueOf(eventDto.eventStatus()),
+        eventDto.title(),
+        eventDto.description(),
         eventDto.start(),
         eventDto.end(),
         AffectedServiceMapper.toBoList(eventDto.affectedServices())
@@ -28,6 +30,8 @@ public final class EventMapper {
         event.participant(),
         event.eventType().name(),
         event.eventStatus().name(),
+        event.title(),
+        event.description(),
         event.start(),
         event.end(),
         AffectedServiceMapper.toDtoList(event.affectedServices())

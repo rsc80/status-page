@@ -3,6 +3,8 @@
   "participant": "bLink",
   "eventType": "MAINTENANCE",
   "eventStatus": "ONGOING",
+  "title": "SIX Database Patch",
+  "description": "Expected downtime of 5min",
   "start": "2099-09-03T15:00:00",
   "end": null,
   "affectedServices": [

@@ -7,6 +7,8 @@ public record Event(String id,
                     String participant,
                     EventType eventType,
                     EventStatus eventStatus,
+                    String title,
+                    String description,
                     LocalDateTime start,
                     LocalDateTime end,
                     List<AffectedService> affectedServices) {

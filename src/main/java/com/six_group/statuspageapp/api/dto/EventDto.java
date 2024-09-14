@@ -9,6 +9,8 @@ public record EventDto(@NotBlank String id,
                        @NotBlank String participant,
                        @NotBlank String eventType,
                        @NotBlank String eventStatus,
+                       @NotBlank String title,
+                       @NotBlank String description,
                        @NotNull LocalDateTime start,
                        LocalDateTime end,
                        @NotNull List<AffectedServiceDto> affectedServices) {

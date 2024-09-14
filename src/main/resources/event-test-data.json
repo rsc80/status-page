@@ -4,6 +4,8 @@
     "participant": "bLink",
     "eventType": "INCIDENT",
     "eventStatus": "ONGOING",
+    "title": "SIX Gateway Outage",
+    "description": "No traffic can be ingested by SIX",
     "start": "2024-09-03T15:00:00",
     "end": null,
     "affectedServices": [
@@ -18,6 +20,8 @@
     "participant": "bLink",
     "eventType": "INCIDENT",
     "eventStatus": "FINISHED",
+    "title": "SIX Gateway Outage",
+    "description": "No traffic can be ingested by SIX",
     "start": "2024-09-03T15:00:00",
     "end": "2024-09-04T22:00:00",
     "affectedServices": [
@@ -32,6 +36,8 @@
     "participant": "bLink",
     "eventType": "MAINTENANCE",
     "eventStatus": "SCHEDULED",
+    "title": "SIX Database Patch",
+    "description": "Expected downtime of 5min",
     "start": "2099-09-03T15:00:00",
     "end": "2100-09-03T15:00:00",
     "affectedServices": [
@@ -40,7 +46,7 @@
         "serviceStatus": "RUNNING_NORMALLY"
       },
       {
-        "name": "core",
+        "name": "consent",
         "serviceStatus": "NO_DATA"
       }
     ]
@@ -50,11 +56,13 @@
     "participant": "bLink",
     "eventType": "MAINTENANCE",
     "eventStatus": "FINISHED",
+    "title": "SIX Database Patch",
+    "description": "Expected downtime of 5min",
     "start": "2014-09-03T15:00:00",
     "end": "2014-09-03T15:00:01",
     "affectedServices": [
       {
-        "name": "core",
+        "name": "kronos",
         "serviceStatus": "RUNNING_NORMALLY"
       }
     ]
