@@ -1,19 +1,14 @@
 package com.six_group.statuspageapp.domain;
 
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.six_group.statuspageapp.StatusPageAppApplication;
 import com.six_group.statuspageapp.api.dto.EventDto;
 import com.six_group.statuspageapp.domain.event.Event;
 import com.six_group.statuspageapp.domain.event.mapper.EventMapper;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
+
+import java.io.IOException;
+import java.util.List;
 
 @Service
 public class EventService {

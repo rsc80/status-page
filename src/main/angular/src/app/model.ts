@@ -8,6 +8,7 @@ export interface StatusItem {
 export interface StatusRow {
   service: string;
   participantId: string,
+  statusIndicator: string,
   items: StatusItem[];
   resolutionMinutes: number;
 }
@@ -48,24 +49,25 @@ export interface Participant {
   name: string;
   isExternal: boolean;
   dailyData: DailyData[];
+  statusIndicator: "SUCCESS" | "WARNING" | "DANGER";
 }
 
 export interface Event {
-    id: string;
-    title: string;
-    description?: string;
-    participant?: string;
-    eventType: EventType;
-    eventStatus: EventStatus;
-    start: Date;
-    end: Date | null;
-    affectedServices?: AffectedService[];
+  id: string;
+  title: string;
+  description?: string;
+  participant?: string;
+  eventType: EventType;
+  eventStatus: EventStatus;
+  start: Date;
+  end: Date | null;
+  affectedServices?: AffectedService[];
 }
 
 export interface AffectedService {
-    id: string;
-    name: string;
-    serviceStatus: "RUNNING_NORMALLY" | "DEGRADED" | "FAILURE" | "NO_DATA";
+  id: string;
+  name: string;
+  serviceStatus: "RUNNING_NORMALLY" | "DEGRADED" | "FAILURE" | "NO_DATA";
 }
 
 export type EventStatus = "SCHEDULED" | "ONGOING" | "FINISHED";

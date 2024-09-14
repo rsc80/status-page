@@ -2,9 +2,9 @@
   <div *ngIf="internalServices$ | async as internalServices; else Loading">
     <div *ngFor="let statusRow of internalServices">
       <h1 class="text-3xl mt-10">{{ statusRow.service }}</h1>
-      <six-alert open type="warning">
+      <six-alert *ngIf="statusRow.statusIndicator !== 'SUCCESS'" open type="warning">
         <six-icon>warning</six-icon>
-        O-oh...
+        {{ statusRow.service }} is currently experiencing problems. (Status: {{ statusRow.statusIndicator }})
       </six-alert>
       <app-status-row (bubbleClick)="onClickStatusBubble($event)"
                       [statusRow]="statusRow"></app-status-row>
