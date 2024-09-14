@@ -1,5 +1,5 @@
 <div [ngSwitch]="statusItem.status" [title]="statusItem.id + ': ' +statusItem.rangeStart"
-     class="transition cursor-pointer flex-1 flex">
+     class="transition cursor-pointer flex-1 flex border border-black rounded-full">
   <div *ngSwitchCase="'SUCCESS'" [ngClass]="{'hover:scale-125 h-10': !large, 'hover:scale-110 h-24':large}"
        class="flex-1 rounded-full bg-green-600"></div>
   <div *ngSwitchCase="'DEGRADED'" [ngClass]="{'hover:scale-125 h-10': !large, 'h-24':large}"

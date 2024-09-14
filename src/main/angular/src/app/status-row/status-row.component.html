@@ -1,5 +1,5 @@
 <div class="p-10 border-teal-700 bg-gray-200 rounded">
-  <div class="flex gap-1">
+  <div class="flex sm:gap-0.5 md:gap-1">
     <app-status-bubble (click)="onClickStatusBubble(statusItem)" *ngFor="let statusItem of statusRow.items"
                        [large]="statusRow.items.length < 50"
                        [statusItem]="statusItem"
