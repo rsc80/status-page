@@ -6,20 +6,21 @@ import com.six_group.statuspageapp.api.dto.StatusIndicator;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Document
-public class DayData {
+public class DayDataOverview {
 
     private String date;
 
     private StatusIndicator statusIndicator;
 
-    private List<Service> services = new ArrayList<>();
+    private List<ServiceOverview> services = new ArrayList<>();
 
-    public DayData() {
+    public DayDataOverview() {
 
     }
 
-    public DayData(String date, StatusIndicator statusIndicator, List<Service> services) {
+    public DayDataOverview(String date, StatusIndicator statusIndicator, List<ServiceOverview> services) {
         this.date = date;
         this.statusIndicator = statusIndicator;
         this.services = services;
@@ -41,11 +42,11 @@ public class DayData {
         this.statusIndicator = statusIndicator;
     }
 
-    public List<Service> getServices() {
+    public List<ServiceOverview> getServices() {
         return services;
     }
 
-    public void setServices(List<Service> services) {
+    public void setServices(List<ServiceOverview> services) {
         this.services = services;
     }
 }

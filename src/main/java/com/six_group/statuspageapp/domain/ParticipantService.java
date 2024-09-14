@@ -2,6 +2,7 @@ package com.six_group.statuspageapp.domain;
 
 
 import com.six_group.statuspageapp.api.dto.ParticipantDto;
+import com.six_group.statuspageapp.api.dto.ParticipantOverviewDto;
 import com.six_group.statuspageapp.api.dto.StatusIndicator;
 import com.six_group.statuspageapp.domain.participant.*;
 import com.six_group.statuspageapp.persistence.ParticipantRepository;
@@ -18,6 +19,15 @@ public class ParticipantService {
 
     public ParticipantService(ParticipantRepository participantRepository) {
         this.participantRepository = participantRepository;
+    }
+
+    public List<ParticipantOverviewDto> getParticipantOverview() {
+        var participants = participantRepository.findAll();
+
+        return participants.parallelStream()
+                .map(this::aggregateDailyMetricsForParticipant)
+                .map(participant -> participant.toOverviewDto(participant))
+                .toList();
     }
 
     public List<ParticipantDto> getAllParticipants() {
