@@ -1,13 +1,11 @@
 package com.six_group.statuspageapp.domain.participant;
 
-import com.redis.om.spring.annotations.Document;
 import com.six_group.statuspageapp.api.dto.StatusIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-@Document
 public class DayDataOverview {
 
     private String date;

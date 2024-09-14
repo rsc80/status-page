@@ -6,6 +6,7 @@ import com.six_group.statuspageapp.api.dto.ParticipantOverviewDto;
 import com.six_group.statuspageapp.domain.ParticipantService;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -20,12 +21,12 @@ public class ParticipantController {
   }
 
   @GetMapping("/participants")
-  public List<ParticipantDto> getAllParticipants() {
+  public List<ParticipantDto> getAllParticipants() throws IOException {
     return this.participantService.getAllParticipants();
   }
 
   @GetMapping("/participants-overview")
-  public List<ParticipantOverviewDto> getParticipantsOverview() {
+  public List<ParticipantOverviewDto> getParticipantsOverview() throws IOException {
     return this.participantService.getParticipantOverview();
   }
 

@@ -1,21 +1,15 @@
 package com.six_group.statuspageapp.domain.participant;
 
-import com.redis.om.spring.annotations.Document;
-import com.redis.om.spring.annotations.Searchable;
 import com.six_group.statuspageapp.api.dto.ParticipantDto;
 import com.six_group.statuspageapp.api.dto.ParticipantOverviewDto;
-import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Document
 public class Participant {
-  @Id
   private String id;
 
-  @Searchable
   private String name;
 
   private Boolean isExternal;

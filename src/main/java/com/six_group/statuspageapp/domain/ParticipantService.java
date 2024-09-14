@@ -1,28 +1,29 @@
 package com.six_group.statuspageapp.domain;
 
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.six_group.statuspageapp.api.dto.ParticipantDto;
 import com.six_group.statuspageapp.api.dto.ParticipantOverviewDto;
 import com.six_group.statuspageapp.api.dto.StatusIndicator;
 import com.six_group.statuspageapp.domain.participant.*;
-import com.six_group.statuspageapp.persistence.ParticipantRepository;
+import org.springframework.core.io.ClassPathResource;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @org.springframework.stereotype.Service
 public class ParticipantService {
 
-    private final ParticipantRepository participantRepository;
 
     private static final double SUCCESS_THRESHOLD = 0.05;
     private static final double WARNING_THRESHOLD = 0.10;
 
-    public ParticipantService(ParticipantRepository participantRepository) {
-        this.participantRepository = participantRepository;
-    }
-
-    public List<ParticipantOverviewDto> getParticipantOverview() {
-        var participants = participantRepository.findAll();
+    public List<ParticipantOverviewDto> getParticipantOverview() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        InputStream inputStream = new ClassPathResource("participant-test-data.json").getInputStream();
+        List<Participant> participants = objectMapper.readValue(inputStream, new TypeReference<>() {});
 
         return participants.parallelStream()
                 .map(this::aggregateDailyMetricsForParticipant)
@@ -30,8 +31,10 @@ public class ParticipantService {
                 .toList();
     }
 
-    public List<ParticipantDto> getAllParticipants() {
-        var participants = participantRepository.findAll();
+    public List<ParticipantDto> getAllParticipants() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        InputStream inputStream = new ClassPathResource("participant-test-data.json").getInputStream();
+        List<Participant> participants = objectMapper.readValue(inputStream, new TypeReference<>() {});
 
         return participants.parallelStream()
                 .map(this::aggregateDailyMetricsForParticipant)
@@ -40,9 +43,7 @@ public class ParticipantService {
     }
 
     public ParticipantDto getParticipantById(String id) {
-        return this.participantRepository.findById(id)
-                .map(this::aggregateDailyMetricsForParticipant)
-                .map(a -> a.toDto(a)).orElseThrow(RuntimeException::new);
+        return null;
     }
 
     private Participant aggregateDailyMetricsForParticipant(Participant participant) {

@@ -1,9 +1,7 @@
 package com.six_group.statuspageapp.domain.participant;
 
 
-import com.redis.om.spring.annotations.Document;
 
-@Document
 public class HourlyMetrics {
 
     private int successCount;

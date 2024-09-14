@@ -1,10 +1,7 @@
 package com.six_group.statuspageapp.domain.participant;
 
-import com.redis.om.spring.annotations.Document;
-
 import java.util.Map;
 
-@Document
 public class Service {
 
     private String serviceName;
