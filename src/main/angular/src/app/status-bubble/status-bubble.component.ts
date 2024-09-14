@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {NgClass, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
 import {StatusItem} from "../model";
 
@@ -12,7 +12,8 @@ import {StatusItem} from "../model";
     NgClass
   ],
   templateUrl: './status-bubble.component.html',
-  styleUrl: './status-bubble.component.scss'
+  styleUrl: './status-bubble.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatusBubbleComponent {
   @Input() statusItem!: StatusItem;

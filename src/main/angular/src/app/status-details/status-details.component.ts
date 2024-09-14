@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, OnInit} from '@angular/core';
 import {StatusService} from "../services/status.service";
 import {ActivatedRoute} from "@angular/router";
 import {Observable, switchMap} from "rxjs";
@@ -17,7 +17,8 @@ import dayjs from "dayjs";
     StatusRowComponent
   ],
   templateUrl: './status-details.component.html',
-  styleUrl: './status-details.component.scss'
+  styleUrl: './status-details.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatusDetailsComponent implements OnInit {
 

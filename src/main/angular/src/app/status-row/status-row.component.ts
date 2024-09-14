@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {DatePipe, NgForOf} from "@angular/common";
 import {StatusBubbleComponent} from "../status-bubble/status-bubble.component";
 
@@ -13,7 +13,8 @@ import {StatusItem, StatusRow} from "../model";
     DatePipe
   ],
   templateUrl: './status-row.component.html',
-  styleUrl: './status-row.component.scss'
+  styleUrl: './status-row.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatusRowComponent {
 
