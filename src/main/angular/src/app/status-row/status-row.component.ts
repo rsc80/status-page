@@ -1,8 +1,9 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {DatePipe, NgForOf} from "@angular/common";
+import {DatePipe, NgForOf, NgIf} from "@angular/common";
 import {StatusBubbleComponent} from "../status-bubble/status-bubble.component";
 
 import {StatusItem, StatusRow} from "../model";
+import {UiLibraryAngularModule} from "@six-group/ui-library-angular";
 
 @Component({
   selector: 'app-status-row',
@@ -10,7 +11,9 @@ import {StatusItem, StatusRow} from "../model";
   imports: [
     NgForOf,
     StatusBubbleComponent,
-    DatePipe
+    DatePipe,
+    UiLibraryAngularModule,
+    NgIf
   ],
   templateUrl: './status-row.component.html',
   styleUrl: './status-row.component.scss',

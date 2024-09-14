@@ -49,7 +49,7 @@ export class StatusComponent {
       return {
         participantId: p.id,
         service: p.name,
-        statusIndicator: p.statusIndicator,
+        statusLine: p.statusLine,
         items: [...items.map(item => this.toStatusItems(item, p))],
         resolutionMinutes: 60
       } as StatusRow;

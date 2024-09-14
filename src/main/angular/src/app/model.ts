@@ -5,10 +5,15 @@ export interface StatusItem {
   rangeStart: Date;
 }
 
+export interface StatusLine {
+  status: string;
+  statusIndicator: string;
+}
+
 export interface StatusRow {
   service: string;
   participantId: string,
-  statusIndicator: string,
+  statusLine: StatusLine,
   items: StatusItem[];
   resolutionMinutes: number;
 }
@@ -47,6 +52,7 @@ export interface DailyData {
 export interface Participant {
   id: string;
   name: string;
+  statusLine: StatusLine;
   isExternal: boolean;
   dailyData: DailyData[];
   statusIndicator: "SUCCESS" | "WARNING" | "DANGER";
