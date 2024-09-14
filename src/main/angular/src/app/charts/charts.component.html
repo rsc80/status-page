@@ -1,0 +1,4 @@
+<div *ngFor="let service of services">
+  <h1 class="text-3xl mt-28">{{ service.serviceName }}</h1>
+  <canvas [id]="'chart-' + service.serviceName">{{ getChart(service) }}</canvas>
+</div>

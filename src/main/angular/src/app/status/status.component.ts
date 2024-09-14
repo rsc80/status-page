@@ -4,7 +4,7 @@ import {StatusBubbleComponent} from "../status-bubble/status-bubble.component";
 import {AsyncPipe, CommonModule, NgForOf} from "@angular/common";
 import {Router} from "@angular/router";
 import {StatusRowComponent} from "../status-row/status-row.component";
-import {DailyData, Participant, StatusItem, StatusRow} from "../model";
+import {Participant, StatusItem, StatusRow} from "../model";
 import {StatusService} from "../services/status.service";
 import {map, Observable} from "rxjs";
 import dayjs from "dayjs";
@@ -25,7 +25,12 @@ export class StatusComponent {
               @Inject(StatusService) private statusService: StatusService) {
     let items: StatusItem[] = [];
     for (let i = 0; i <= 60; i++) {
-      items.push({id: '' + i, status: "NO_DATA", rangeStart: dayjs().subtract(60 - i, "days").toDate()});
+      items.push({
+        participantId: 'unknown',
+        id: '' + i,
+        status: "NO_DATA",
+        rangeStart: dayjs().subtract(60 - i, "days").toDate()
+      });
     }
     let participants$ = this.statusService.getParticipants();
     this.externalServices$ = participants$.pipe(
@@ -34,28 +39,34 @@ export class StatusComponent {
       map(p => p.filter(p => !p.isExternal).map(this.enrich(items))));
   }
 
-  onClickStatusBubble(bubble: StatusItem) {
+  onClickStatusBubble(statusItem: StatusItem) {
+    console.log("click", statusItem);
     // noinspection JSIgnoredPromiseFromCall
-    this.router.navigate(["status", bubble.id]);
+    this.router.navigate(["status", statusItem.participantId, statusItem.id]);
   }
 
   private enrich(items: StatusItem[]) {
     return (p: Participant) => {
       return {
+        participantId: p.id,
         service: p.name,
-        items: [...items.map(item => this.toStatusItems(item, p.dailyData))],
+        items: [...items.map(item => this.toStatusItems(item, p))],
         resolutionMinutes: 60
       } as StatusRow;
     };
   }
 
-  private toStatusItems(emptyStatusItem: StatusItem, dailyData: DailyData[]) {
-    let enrichedDailyData = dailyData.filter(d => dayjs(d.date).isSame(dayjs(emptyStatusItem.rangeStart), "day"))[0];
+  private toStatusItems(emptyStatusItem: StatusItem, participant: Participant) {
+    let enrichedDailyData = participant.dailyData.filter(d => dayjs(d.date).isSame(dayjs(emptyStatusItem.rangeStart), "day"))[0];
     return enrichedDailyData && {
+      participantId: participant.id,
       status: this.mapStatus(enrichedDailyData.statusIndicator),
       id: enrichedDailyData.date,
       rangeStart: dayjs(enrichedDailyData.date).toDate()
-    } || emptyStatusItem;
+    } || {
+      ...emptyStatusItem,
+      participantId: participant.id
+    };
   }
 
   private mapStatus(statusIndicator: "WARNING" | "SUCCESS"): "SUCCESS" | "DEGRADED" | "FAILURE" {

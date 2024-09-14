@@ -1,10 +1,12 @@
 <div class="container xl:px-52 mx-auto">
-  <div *ngIf="statusItem$|async as statusItem">
-    <h1 class="text-3xl">{{ statusItem.id }}: {{ statusItem.status }}</h1>
-    <app-status-row [statusRow]="statusRow"></app-status-row>
+  <div *ngIf="participant$|async as participant; else Loading">
+    <h1 class="text-4xl">{{ participant.name }}</h1>
   </div>
-  <div class="mt-10">
-    <canvas id="MyChart">{{ chart }}</canvas>
-  </div>
+  <app-charts [containers]="(chartsContainers$|async)||[]" [participant]="participant$|async"></app-charts>
 
+  <ng-template #Loading>
+    <div class="flex justify-center mt-28">
+      <six-spinner class="text-8xl"></six-spinner>
+    </div>
+  </ng-template>
 </div>

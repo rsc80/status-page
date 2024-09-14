@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 import {StatusComponent} from "./status/status.component";
 import {EventsComponent} from "./events/events.component";
 import {EventComponent} from "./event/event.component";
@@ -10,7 +10,7 @@ export const routes: Routes = [
     component: StatusComponent
   },
   {
-    path: "status/:id",
+    path: "status/:participantId/:day",
     component: StatusDetailsComponent
   },
   {
