@@ -6,3 +6,16 @@ GET localhost:8080/api/participants
 
 ###
 GET localhost:8080/api/participants-overview
+
+###
+POST http://localhost:8080/api/participants/1/ais/v3
+Content-Type: application/json
+
+{
+  "successCount": 222,
+  "clientErrorCount": 22,
+  "serverErrorCount": 33
+}
+
+###
+GET http://localhost:8080/api/participants/1/2024-09-14
