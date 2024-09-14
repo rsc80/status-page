@@ -27,7 +27,7 @@ public class ParticipantService {
                 .toList();
     }
 
-    public List<ParticipantDto> getAllParticipants() throws IOException {
+    public List<ParticipantDto> getAllParticipants() {
 
         List<Participant> participants = StatusPageAppApplication.PARTICIPANT_MAP.values().stream().toList();
 
@@ -37,16 +37,14 @@ public class ParticipantService {
                 .toList();
     }
 
-    public DayData getParticipantByIdAndHour(String id, String day) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        InputStream inputStream = new ClassPathResource("participant-test-data.json").getInputStream();
-        List<Participant> participants = objectMapper.readValue(inputStream, new TypeReference<>() {});
+    public ParticipantDailyOverviewDto getParticipantByIdAndDay(String id, String day) {
+        List<Participant> participants = StatusPageAppApplication.PARTICIPANT_MAP.values().stream().toList();
 
         Participant participant = participants.stream()
                 .filter(p -> id.equals(p.getId()))
                 .findFirst().orElseThrow(RuntimeException::new);
-        return this.aggregateDailyMetricsForParticipant(participant).getDailyData().stream().filter(dayData -> dayData.getDate().equals(day)).findFirst().orElseThrow(RuntimeException::new);
-
+        DayData data = this.aggregateDailyMetricsForParticipant(participant).getDailyData().stream().filter(dayData -> dayData.getDate().equals(day)).findFirst().orElse(null);
+        return new ParticipantDailyOverviewDto(participant.getName(), data);
 
     }
 

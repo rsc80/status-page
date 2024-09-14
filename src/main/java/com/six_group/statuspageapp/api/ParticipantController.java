@@ -4,18 +4,16 @@ package com.six_group.statuspageapp.api;
 import com.six_group.statuspageapp.StatusPageAppApplication;
 import com.six_group.statuspageapp.api.dto.ParticipantDto;
 import com.six_group.statuspageapp.api.dto.ParticipantOverviewDto;
+import com.six_group.statuspageapp.domain.ParticipantDailyOverviewDto;
 import com.six_group.statuspageapp.domain.ParticipantService;
 import com.six_group.statuspageapp.domain.participant.DayData;
 import com.six_group.statuspageapp.domain.participant.HourlyMetrics;
-import com.six_group.statuspageapp.domain.participant.DayData;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.chrono.ChronoLocalDateTime;
 import java.util.List;
-import java.util.Locale;
 
 @RestController
 @RequestMapping("/api")
@@ -39,8 +37,8 @@ public class ParticipantController {
   }
 
   @GetMapping("/participants/{id}/{day}")
-  public DayData getParticipantById(@PathVariable String id, @PathVariable String day) throws IOException {
-    return this.participantService.getParticipantByIdAndHour(id, day);
+  public ParticipantDailyOverviewDto getParticipantById(@PathVariable String id, @PathVariable String day) {
+    return this.participantService.getParticipantByIdAndDay(id, day);
   }
 
   @PostMapping("/participants/{id}/{serviceName}/{serviceVersion}")
