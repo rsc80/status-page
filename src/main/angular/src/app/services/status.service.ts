@@ -3,8 +3,6 @@ import {Observable, of} from "rxjs";
 import {Participant, StatusItem} from "../model";
 import {HttpClient} from "@angular/common/http";
 
-const BASE_URL = "http://localhost:8080";
-
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +16,7 @@ export class StatusService {
   }
 
   getParticipants(): Observable<Participant[]> {
-    return this.httpClient.get<Participant[]>(`${BASE_URL}/api/participants-overview`);
+    return this.httpClient.get<Participant[]>(`/api/participants-overview`);
   }
 
 }
