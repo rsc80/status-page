@@ -25,7 +25,7 @@ public class StatusPageAppApplication {
 
     @Bean
     CommandLineRunner loadTestData() {
-        return _ -> {
+        return strings -> {
             ObjectMapper objectMapper = new ObjectMapper();
             InputStream inputStream = new ClassPathResource("participant-test-data.json").getInputStream();
             List<Participant> participantList = objectMapper.readValue(inputStream, new TypeReference<>() {
