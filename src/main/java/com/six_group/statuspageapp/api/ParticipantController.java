@@ -12,8 +12,6 @@ import com.six_group.statuspageapp.domain.participant.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -42,12 +40,10 @@ public class ParticipantController {
         return this.participantService.getParticipantByIdAndDay(id, day);
     }
 
-    @PostMapping("/participants/{id}/{serviceName}/{serviceVersion}")
-    public void postParticipantById(@PathVariable String id, @PathVariable String serviceName, @PathVariable String serviceVersion, @RequestBody HourlyMetrics hourlyMetrics) {
+    @PostMapping("/participants/{id}/{date}/{hour}/{serviceName}/{serviceVersion}")
+    public void postParticipantById(@PathVariable String id, @PathVariable String date, @PathVariable String hour, @PathVariable String serviceName, @PathVariable String serviceVersion, @RequestBody HourlyMetrics hourlyMetrics) {
         var participant = StatusPageAppApplication.PARTICIPANT_MAP.get(id);
         if (participant != null) {
-            var date = LocalDate.now().toString();
-            var hour = "%02d:00".formatted(LocalDateTime.now().getHour());
 
             var dailyData = participant.getDailyData().stream().filter(v -> v.getDate().equals(date)).findFirst().orElseGet(() -> {
                 var dayData = new DayData();
