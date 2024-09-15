@@ -86,12 +86,12 @@ public class ParticipantService {
     int totalClientErrorCount;
     int totalServerErrorCount;
 
+    StatusIndicator worstStatusIndicator = StatusIndicator.SUCCESS;
     for (Service service : dayData.getServices()) {
       totalRequests = 0;
       totalSuccessCount = 0;
       totalClientErrorCount = 0;
       totalServerErrorCount = 0;
-      StatusIndicator worstStatusIndicator = StatusIndicator.SUCCESS;
       for (HourlyMetrics hourlyMetrics : service.getHours().values()) {
         totalSuccessCount += hourlyMetrics.getSuccessCount();
         totalClientErrorCount += hourlyMetrics.getClientErrorCount();
@@ -100,8 +100,8 @@ public class ParticipantService {
         worstStatusIndicator = worstStatusIndicator.getWorse(calculateStatusIndicator(hourlyMetrics.getServerErrorCount(), hourlyMetrics.getSuccessCount() + hourlyMetrics.getClientErrorCount() + hourlyMetrics.getServerErrorCount()));
       }
       service.setDailyMetrics(buildDailyMetrics(totalRequests, totalSuccessCount, totalClientErrorCount, totalServerErrorCount));
-      dayData.setStatusIndicator(worstStatusIndicator);
     }
+    dayData.setStatusIndicator(worstStatusIndicator);
     return dayData;
   }
 
