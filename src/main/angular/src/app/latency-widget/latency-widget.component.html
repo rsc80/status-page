@@ -1,0 +1,27 @@
+<div *ngIf="service.avgLatency <= 200" class="mr-8  mt-1" open type="success">
+  <div class="flex gap-3 items-center text-emerald-500">
+    <six-icon class="text-3xl">check_circle</six-icon>
+    <div>
+      <div>Average Latency</div>
+      <pre class="text-lg">{{ service.avgLatency }} ms</pre>
+    </div>
+  </div>
+</div>
+<div *ngIf="service.avgLatency > 200 && service.avgLatency <= 500" class="mr-8  mt-1" open type="warning">
+  <div class="flex gap-3 items-center text-orange-500">
+    <six-icon class="text-3xl">warning_amber</six-icon>
+    <div>
+      <div>Average Latency</div>
+      <pre class="text-lg">{{ service.avgLatency }} ms</pre>
+    </div>
+  </div>
+</div>
+<div *ngIf="service.avgLatency > 500" class="mr-8  mt-1" open type="danger">
+  <div class="flex gap-3 items-center text-red-700">
+    <six-icon class="text-3xl">error_outline</six-icon>
+    <div>
+      <div>Average Latency</div>
+      <pre class="text-lg">{{ service.avgLatency }} ms</pre>
+    </div>
+  </div>
+</div>

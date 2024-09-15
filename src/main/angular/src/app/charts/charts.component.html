@@ -1,37 +1,13 @@
 <div *ngIf="canvasIds && canvasIds.length > 0; else Empty">
   <div *ngFor="let service of services" class="mb-10">
-    <h1 class="text-3xl my-3">{{ service.serviceName }} {{ service.serviceVersion }}</h1>
+    <div class="flex justify-between">
+      <h1 class="text-3xl my-3">{{ service.serviceName }} {{ service.serviceVersion }}</h1>
+      <app-latency-widget [service]="service"></app-latency-widget>
+    </div>
     <div class="flex flex-wrap items-center justify-center">
       <div class="w-1/2 md:w-1/6 flex flex-col justify-center items-center p-2">
         <h2 class="font-bold mb-3 text-gray-600">Total</h2>
         <canvas [id]="'pie-chart-' + service.serviceName">{{ getPieChart(service) }}</canvas>
-        <div class="mr-8  mt-1" *ngIf="service.avgLatency <= 200" open type="success">
-          <div class="flex gap-3 items-center text-green-500">
-            <six-icon style="color: rgb(52, 211, 153)" class="text-4xl">check_circle</six-icon>
-          <div style="color: rgb(52, 211, 153)">
-            ⌀ latency
-            <pre style="color: rgb(52, 211, 153)" class="text-lg">{{service.avgLatency}} ms</pre>
-          </div>
-          </div>
-        </div>
-        <div class="mr-8  mt-1" *ngIf="service.avgLatency > 200 && service.avgLatency <= 500" open type="warning">
-        <div class="flex gap-3 items-center text-orange-500">
-          <six-icon style="color: rgb(249,115,22)" class="text-4xl">warning_amber</six-icon>
-          <div style="color: rgb(249,115,22)">
-            ⌀ latency
-            <pre style="color: rgb(249,115,22)" class="text-lg">{{service.avgLatency}} ms</pre>
-          </div>
-        </div>
-        </div>
-        <div class="mr-8  mt-1" *ngIf="service.avgLatency > 500" open type="danger">
-          <div class="flex gap-3 items-center text-orange-500">
-            <six-icon style="color: rgb(248, 113, 113)" class="text-4xl">error_outline</six-icon>
-            <div style="color: rgb(248, 113, 113)">
-              ⌀ latency
-              <pre style="color: rgb(248, 113, 113)" class="text-lg">{{service.avgLatency}} ms</pre>
-            </div>
-          </div>
-        </div>
       </div>
       <div class="w-full md:w-5/6 p-2">
         <canvas [id]="'chart-' + service.serviceName">{{ getBarChart(service) }}</canvas>

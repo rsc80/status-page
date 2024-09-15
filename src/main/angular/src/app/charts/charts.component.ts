@@ -3,6 +3,7 @@ import {JsonPipe, NgForOf, NgIf} from "@angular/common";
 import {Chart} from "chart.js/auto";
 import {ParticipantStatusDetails, Service} from "../model";
 import {UiLibraryAngularModule} from "@six-group/ui-library-angular";
+import {LatencyWidgetComponent} from "../latency-widget/latency-widget.component";
 
 @Component({
   selector: 'app-charts',
@@ -11,7 +12,8 @@ import {UiLibraryAngularModule} from "@six-group/ui-library-angular";
     NgForOf,
     JsonPipe,
     NgIf,
-    UiLibraryAngularModule
+    UiLibraryAngularModule,
+    LatencyWidgetComponent
   ],
   templateUrl: './charts.component.html',
   styleUrl: './charts.component.scss'

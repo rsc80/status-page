@@ -1,7 +1,7 @@
 #!/bin/bash
 echo inserting testdata...
-export BASE_URL=http://localhost:8080
-#export BASE_URL=https://status.blink.azure.six-group.com
+#export BASE_URL=http://localhost:8080
+export BASE_URL=https://status.blink.azure.six-group.com
 
 insertDay() {
     FROM_HOUR=$1
@@ -21,6 +21,23 @@ insertDay() {
                                                  \"clientErrorCount\": 0,
                                                  \"serverErrorCount\": ${ERROR_COUNT}
                                                }" -X POST ${URL}
+    done
+}
+
+insertParticipant() {
+
+    FROM_DAY=$1
+    TO_DAY=$2
+
+    FROM_HOUR=$3
+    TO_HOUR=$4
+
+    SUCCESS_COUNT=$5
+    ERROR_COUNT=$6
+
+    for d in $(seq $FROM_DAY $TO_DAY);
+    do
+        insertDay $FROM_HOUR $TO_HOUR $SUCCESS_COUNT $ERROR_COUNT &
     done
 }
 
@@ -45,10 +62,7 @@ insertData() {
     do
         for p in $(seq $FROM_PARTICIPANT $TO_PARTICIPANT);
         do
-            for d in $(seq $FROM_DAY $TO_DAY);
-            do
-                insertDay $FROM_HOUR $TO_HOUR $SUCCESS_COUNT $ERROR_COUNT &
-            done
+            insertParticipant
         done
     done
 }
