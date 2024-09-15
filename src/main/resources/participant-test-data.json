@@ -3,6 +3,22 @@
     "id": "1",
     "name": "bLink",
     "isExternal": false,
+    "statusLine": {
+      "status": "Operational",
+      "statusIndicator": "SUCCESS"
+    },
+    "incidents": [
+      {
+        "name": "Database incident",
+        "description": "There has been a database incident.",
+        "timespan": {
+          "start": "2024-09-01T10:30:00",
+          "end": "2024-09-02T10:30:00"
+        },
+        "severity": "HIGH",
+        "status": "RESOLVED"
+      }
+    ],
     "dailyData": [
       {
         "date": "2024-09-13",
@@ -112,6 +128,11 @@
     "id": "2",
     "name": "Cembalo Bank 1",
     "isExternal": true,
+    "statusLine": {
+      "status": "Ongoing Incident #234",
+      "statusIndicator": "DANGER"
+    },
+    "incidents": [],
     "dailyData": [
       {
         "date": "2024-09-01",
@@ -221,6 +242,11 @@
     "id": "3",
     "name": "Cembalo Bank 2",
     "isExternal": true,
+    "statusLine": {
+      "status": "Operational",
+      "statusIndicator": "SUCCESS"
+    },
+    "incidents": [],
     "dailyData": [
       {
         "date": "2024-09-01",
@@ -330,6 +356,11 @@
     "id": "4",
     "name": "Cembalo Bank 3",
     "isExternal": true,
+    "statusLine": {
+      "status": "Ongoing Incident #235",
+      "statusIndicator": "WARNING"
+    },
+    "incidents": [],
     "dailyData": [
       {
         "date": "2024-09-01",

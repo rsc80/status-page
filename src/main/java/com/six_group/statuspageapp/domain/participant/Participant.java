@@ -1,13 +1,12 @@
 package com.six_group.statuspageapp.domain.participant;
 
+import com.six_group.statuspageapp.api.dto.Incident;
 import com.six_group.statuspageapp.api.dto.ParticipantDto;
 import com.six_group.statuspageapp.api.dto.ParticipantOverviewDto;
-import com.six_group.statuspageapp.api.dto.StatusIndicator;
 import com.six_group.statuspageapp.api.dto.StatusLine;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Participant {
@@ -16,6 +15,10 @@ public class Participant {
     private String name;
 
     private Boolean isExternal;
+
+    private List<Incident> incidents;
+
+    private StatusLine statusLine;
 
     private List<DayData> dailyData = new ArrayList<>();
 
@@ -40,8 +43,28 @@ public class Participant {
         return this;
     }
 
+    public StatusLine getStatusLine() {
+        return statusLine;
+    }
+
+    public void setStatusLine(StatusLine statusLine) {
+        this.statusLine = statusLine;
+    }
+
     public Boolean getIsExternal() {
         return isExternal;
+    }
+
+    public Boolean getExternal() {
+        return isExternal;
+    }
+
+    public List<Incident> getIncidents() {
+        return incidents;
+    }
+
+    public void setIncidents(List<Incident> incidents) {
+        this.incidents = incidents;
     }
 
     public void setExternal(Boolean external) {
@@ -72,20 +95,12 @@ public class Participant {
                                 .stream().map(service ->
                                         new ServiceOverview(service.getServiceName(), service.getServiceVersion(), service.getDailyMetrics())).toList()
                 )).collect(Collectors.toList());
-
-        if (Objects.equals(participant.getId(), "2")) {
-            return new ParticipantOverviewDto(
-                    participant.getId(),
-                    participant.getName(),
-                    participant.getIsExternal(),
-                    new StatusLine("System Error", StatusIndicator.DANGER),
-                    dayDataOverviewDtos);
-        }
         return new ParticipantOverviewDto(
                 participant.getId(),
                 participant.getName(),
                 participant.getIsExternal(),
-                new StatusLine("System Operational", StatusIndicator.SUCCESS),
+                participant.getIncidents(),
+                participant.getStatusLine(),
                 dayDataOverviewDtos);
     }
 }

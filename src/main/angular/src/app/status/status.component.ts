@@ -8,11 +8,12 @@ import {Participant, StatusItem, StatusRow} from "../model";
 import {StatusService} from "../services/status.service";
 import {map, Observable} from "rxjs";
 import dayjs from "dayjs";
+import {IncidentHistoryComponent} from "../incident-history/incident-history.component";
 
 @Component({
   selector: 'app-status',
   standalone: true,
-  imports: [UiLibraryAngularModule, StatusBubbleComponent, NgForOf, StatusRowComponent, AsyncPipe, CommonModule],
+  imports: [UiLibraryAngularModule, StatusBubbleComponent, NgForOf, StatusRowComponent, AsyncPipe, CommonModule, IncidentHistoryComponent],
   templateUrl: './status.component.html',
   styleUrl: './status.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

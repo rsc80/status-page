@@ -8,6 +8,7 @@ public record ParticipantOverviewDto(
     String id,
     String name,
     Boolean isExternal,
+    List<Incident> incidents,
     StatusLine statusLine,
     List<DayDataOverview> dailyData
 ) {

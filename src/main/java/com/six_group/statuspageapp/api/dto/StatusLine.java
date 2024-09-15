@@ -6,6 +6,9 @@ public class StatusLine {
 
   private StatusIndicator statusIndicator;
 
+  public StatusLine() {
+  }
+
   public StatusLine(String status, StatusIndicator statusIndicator) {
     this.status = status;
     this.statusIndicator = statusIndicator;
