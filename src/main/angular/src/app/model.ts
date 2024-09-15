@@ -40,6 +40,7 @@ export interface HourMetrics {
 export interface Service {
   serviceName: string;
   serviceVersion: string;
+  avgLatency: number;
   dailyMetrics: DailyServiceMetrics;
   hours: { [key: string]: HourMetrics };
 }

@@ -8,6 +8,8 @@ public class Service {
 
     private String serviceVersion;
 
+    private double avgLatency;
+
     private DailyMetrics dailyMetrics;
 
     private Map<String, HourlyMetrics> hours;
@@ -45,5 +47,13 @@ public class Service {
 
     public void setHours(Map<String, HourlyMetrics> hours) {
         this.hours = hours;
+    }
+
+    public double getAvgLatency() {
+        return avgLatency;
+    }
+
+    public void setAvgLatency(double avgLatency) {
+        this.avgLatency = avgLatency;
     }
 }
