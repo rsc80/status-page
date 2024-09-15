@@ -25,7 +25,6 @@ export class ChartsComponent implements OnChanges, OnDestroy {
   protected services: Service[] = [];
   protected barCharts: { [key: string]: Chart } = {};
   protected pieCharts: { [key: string]: Chart } = {};
-  protected summaryChart: Chart | undefined;
 
   getBarChart(service: Service) {
     return this.barCharts[service.serviceName] || this.createBarChart(service)
@@ -111,7 +110,6 @@ export class ChartsComponent implements OnChanges, OnDestroy {
             suggestedMax: 100,
             stacked: true,
             ticks: {
-              // Include a dollar sign in the ticks
               callback: (value, index, ticks) => {
                 return value + "%";
               }
@@ -135,7 +133,7 @@ export class ChartsComponent implements OnChanges, OnDestroy {
 
   private createPieChart(service: Service) {
     let canvasId = this.getCanvasId(service);
-    return service.dailyMetrics && new Chart("pie-" + canvasId, {
+    let chart = new Chart("pie-" + canvasId, {
       type: 'doughnut',
 
       data: {
@@ -173,6 +171,8 @@ export class ChartsComponent implements OnChanges, OnDestroy {
         }
       }
     }) as Chart;
+    this.pieCharts[service.serviceName] = chart;
+    return chart;
   }
 
 }
