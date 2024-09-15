@@ -3,6 +3,12 @@ export interface StatusItem {
   participantId: string,
   status: "SUCCESS" | "DEGRADED" | "FAILURE" | "NO_DATA";
   rangeStart: Date;
+  statistics: {
+    percentSuccess: number,
+    successCount: number,
+    failureCount: number
+    totalCount: number
+  }
 }
 
 export interface StatusLine {

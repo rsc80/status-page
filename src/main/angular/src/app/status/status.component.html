@@ -1,7 +1,7 @@
-<div class="container xl:px-52 mx-auto">
+<div class="mx-auto xs:w-full sm:w-full md:w-3/4">
   <div *ngIf="internalServices$ | async as internalServices; else Loading">
-    <div *ngFor="let statusRow of internalServices">
-      <h1 class="text-3xl mt-10">{{ statusRow.participantName }}</h1>
+    <div *ngFor="let statusRow of internalServices" class="mb-5">
+      <h1 class="text-3xl">{{ statusRow.participantName }}</h1>
       <app-status-row (bubbleClick)="onClickStatusBubble($event)"
                       [statusRow]="statusRow"></app-status-row>
     </div>
@@ -11,7 +11,7 @@
   <div *ngIf="externalServices$ | async as externalServices;">
     <h1 class="text-3xl mt-10">External Services</h1>
     <div class="p-5 border rounded-lg flex flex-col gap-3">
-      <div *ngFor="let statusRow of externalServices">
+      <div *ngFor="let statusRow of externalServices" class="mb-5">
         <h2 class="text-2xl mt-3">{{ statusRow.participantName }}</h2>
         <app-status-row (bubbleClick)="onClickStatusBubble($event)" [statusRow]="statusRow"></app-status-row>
       </div>

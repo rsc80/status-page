@@ -1,23 +1,23 @@
-<six-alert *ngIf="statusRow.statusLine.statusIndicator !== 'SUCCESS'" open type="warning">
-  <div class="flex gap-3 items-center">
-    <six-icon class="text-5xl text-orange-600">warning</six-icon>
-    <div>
-      {{ statusRow.participantName }} is currently experiencing problems.
-      (Status: {{ statusRow.statusLine.statusIndicator }}
-      )
-      <pre class="text-lg">{{ statusRow.statusLine.status }}</pre>
+<div class="shadow mt-2 mb-3">
+  <six-alert *ngIf="statusRow.statusLine.statusIndicator !== 'SUCCESS'" open type="warning">
+    <div class="flex gap-3 items-center text-orange-500">
+      <six-icon class="text-4xl">warning_amber</six-icon>
+      <div>
+        {{ statusRow.participantName }} is currently experiencing problems.
+        (Status: '{{ statusRow.statusLine.statusIndicator }}')
+        <pre class="text-lg">{{ statusRow.statusLine.status }}</pre>
+      </div>
     </div>
-  </div>
-</six-alert>
-<div class="xs:p-3 md:p-10 sm:p-3 border-teal-700 bg-gray-200 rounded">
-  <div class="flex sm:gap-0.5 md:gap-1">
+  </six-alert>
+</div>
+<div class="p-1 sm:p-3 lg:p-10 border-teal-700 bg-gray-100 rounded-lg">
+  <div class="flex sm:gap-0.5 lg:gap-1">
     <app-status-bubble (click)="onClickStatusBubble(statusItem)" *ngFor="let statusItem of statusRow.items"
-                       [large]="statusRow.items.length < 50"
                        [statusItem]="statusItem"
                        class="flex-1"></app-status-bubble>
   </div>
-  <div class="flex justify-between">
+  <div class="flex justify-between text-gray-500">
     <div>{{ statusRow.items[0].rangeStart|date:"dd.MM.YYYY" }}</div>
-    <div>today</div>
+    <div>Today</div>
   </div>
 </div>

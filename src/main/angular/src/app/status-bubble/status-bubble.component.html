@@ -1,11 +1,14 @@
-<div [ngSwitch]="statusItem.status" [title]="statusItem.id + ': ' +statusItem.rangeStart"
-     class="transition cursor-pointer flex-1 flex">
-  <div *ngSwitchCase="'SUCCESS'" [ngClass]="{'hover:scale-125 h-10': !large, 'hover:scale-110 h-24':large}"
-       class="flex-1 rounded-full bg-green-300 border border-green-500"></div>
-  <div *ngSwitchCase="'DEGRADED'" [ngClass]="{'hover:scale-125 h-10': !large, 'h-24':large}"
-       class="flex-1 rounded-full bg-orange-300 border border-orange-500"></div>
-  <div *ngSwitchCase="'FAILURE'" [ngClass]="{'hover:scale-125 h-10': !large, 'h-24':large}"
-       class="flex-1 rounded-full bg-red-400 border border-red-600"></div>
-  <div *ngSwitchCase="'NO_DATA'" [ngClass]="{'hover:scale-125 h-10': !large, 'h-24':large}"
-       class="flex-1 rounded-full bg-gray-300 border border-gray-400"></div>
-</div>
+<six-tooltip
+  [content]="(statusItem.rangeStart | date: 'EEEE, dd.MM.YYYY') + ': ' + statusItem.statistics.percentSuccess + '% (' + statusItem.statistics.successCount +'/'+ statusItem.statistics.totalCount + ')'">
+  <div [ngSwitch]="statusItem.status"
+       class="transition cursor-pointer flex-1 flex">
+    <div *ngSwitchCase="'SUCCESS'"
+         class="flex-1 rounded bg-emerald-400 border border-emerald-600 hover:scale-125 h-16"></div>
+    <div *ngSwitchCase="'DEGRADED'"
+         class="flex-1 rounded bg-orange-300 border border-orange-500 hover:scale-125 h-16"></div>
+    <div *ngSwitchCase="'FAILURE'"
+         class="flex-1 rounded bg-red-400 border border-red-600 hover:scale-125 h-16"></div>
+    <div *ngSwitchCase="'NO_DATA'"
+         class="flex-1 rounded bg-gray-200 border border-gray-300 hover:scale-125 h-16"></div>
+  </div>
+</six-tooltip>

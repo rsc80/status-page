@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {NgClass, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
+import {DatePipe, NgClass, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
 import {StatusItem} from "../model";
+import {UiLibraryAngularModule} from "@six-group/ui-library-angular";
 
 @Component({
   selector: 'app-status-bubble',
@@ -9,7 +10,9 @@ import {StatusItem} from "../model";
     NgIf,
     NgSwitchCase,
     NgSwitch,
-    NgClass
+    NgClass,
+    UiLibraryAngularModule,
+    DatePipe
   ],
   templateUrl: './status-bubble.component.html',
   styleUrl: './status-bubble.component.scss',
@@ -17,6 +20,4 @@ import {StatusItem} from "../model";
 })
 export class StatusBubbleComponent {
   @Input() statusItem!: StatusItem;
-  @Input() large!: boolean;
-
 }

@@ -1,6 +1,6 @@
 <div class="container xl:px-52 mx-auto">
   <div *ngIf="participantStatusDetails$|async as participantStatusDetails; else Loading">
-    <h1 class="text-4xl">{{ participantStatusDetails.name }} - {{ date$ | async | date: "dd.MM.YYYY" }}</h1>
+    <h1 class="text-4xl mb-7">{{ participantStatusDetails.name }} - {{ date$ | async | date: "dd.MM.YYYY" }}</h1>
   </div>
   <app-charts [canvasIds]="(canvasIds$|async)||[]"
               [participantStatusDetails]="participantStatusDetails$|async"></app-charts>

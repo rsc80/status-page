@@ -21,10 +21,16 @@ export class ChartsComponent implements OnChanges, OnDestroy {
   @Input() canvasIds!: string[];
   @Input() participantStatusDetails!: ParticipantStatusDetails | null;
   protected services: Service[] = [];
-  protected charts: { [key: string]: Chart } = {};
+  protected barCharts: { [key: string]: Chart } = {};
+  protected pieCharts: { [key: string]: Chart } = {};
+  protected summaryChart: Chart | undefined;
 
-  getChart(service: Service) {
-    return this.charts[service.serviceName] || this.createChart(service)
+  getBarChart(service: Service) {
+    return this.barCharts[service.serviceName] || this.createBarChart(service)
+  }
+
+  getPieChart(service: Service) {
+    return this.pieCharts[service.serviceName] || this.createPieChart(service)
   }
 
   getCanvasId(service: Service): string {
@@ -32,7 +38,8 @@ export class ChartsComponent implements OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    Object.keys(this.charts).forEach(serviceName => this.charts[serviceName].destroy());
+    Object.keys(this.barCharts).forEach(serviceName => this.barCharts[serviceName].destroy());
+    Object.keys(this.pieCharts).forEach(serviceName => this.pieCharts[serviceName].destroy());
   }
 
   ngOnChanges(): void {
@@ -41,7 +48,7 @@ export class ChartsComponent implements OnChanges, OnDestroy {
     }
   }
 
-  private createChart(service: Service) {
+  private createBarChart(service: Service) {
     function extract(service: Service, hour: string) {
       let hourData = service.hours[hour];
       return {
@@ -80,15 +87,15 @@ export class ChartsComponent implements OnChanges, OnDestroy {
         datasets: [{
           label: '% Success',
           data: hoursSuccess,
-          backgroundColor: 'rgba(134 239 172 / 0.5)',
-          borderColor: 'rgba(60, 150, 60,1)',
+          backgroundColor: 'rgba(52, 211, 153, 0.5)',
+          borderColor: 'rgba(52, 211, 153,1)',
           borderWidth: 1,
           borderRadius: 3
         }, {
           label: '% Failed',
           data: hoursFailures,
           backgroundColor: 'rgba(248, 113, 113,0.5)',
-          borderColor: 'rgba(150, 60, 60,1)',
+          borderColor: 'rgba(248, 113, 113,1)',
           borderWidth: 1,
           borderRadius: 3
         }]
@@ -100,16 +107,70 @@ export class ChartsComponent implements OnChanges, OnDestroy {
           y: {
             suggestedMin: 0,
             suggestedMax: 100,
-            stacked: true
+            stacked: true,
+            ticks: {
+              // Include a dollar sign in the ticks
+              callback: (value, index, ticks) => {
+                return value + "%";
+              }
+            }
           },
           x: {
             stacked: true
           }
+        },
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
         }
       }
     });
-    this.charts[service.serviceName] = chart;
+    this.barCharts[service.serviceName] = chart;
     return chart;
+  }
+
+
+  private createPieChart(service: Service) {
+    let canvasId = this.getCanvasId(service);
+    return service.dailyMetrics && new Chart("pie-" + canvasId, {
+      type: 'doughnut',
+
+      data: {
+        labels: [
+          'Server Errors',
+          'Success',
+          'Client Errors'
+        ],
+        datasets: [{
+          label: 'API-Calls',
+          data: [
+            service.dailyMetrics.totalServerErrorCount,
+            service.dailyMetrics.totalSuccessCount,
+            service.dailyMetrics.totalClientErrorCount
+          ],
+          backgroundColor: [
+            'rgba(248, 113, 113,0.5)',
+            'rgba(52, 211, 153, 0.5)',
+            'rgba(134, 239, 172, 0.5)'
+          ],
+          borderColor: [
+            'rgb(248, 113, 113)',
+            'rgb(52, 211, 153)',
+            'rgb(134, 239, 172)'
+          ],
+          hoverOffset: 4
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            position: 'bottom',
+            align: 'start'
+          }
+        }
+      }
+    }) as Chart;
   }
 
 }
