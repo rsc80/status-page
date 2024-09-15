@@ -1,0 +1,35 @@
+<div class="shadow mt-2 mb-3">
+  <ng-container>
+<!--    tbd: clean up-->
+    <six-alert *ngIf="statusLine.statusIndicator === 'SUCCESS'" open type="success">
+      <div class="flex gap-3 items-center text-green-500">
+        <six-icon class="text-4xl">check_circle</six-icon>
+        <div>
+           {{ statusLine.status }}
+        </div>
+      </div>
+    </six-alert>
+  </ng-container>
+  <ng-container>
+    <six-alert *ngIf="statusLine.statusIndicator === 'WARNING'" open type="warning">
+      <div class="flex gap-3 items-center text-orange-500">
+        <six-icon class="text-4xl">warning_amber</six-icon>
+        <div>
+          Partial Outage
+          <pre class="text-lg">{{ statusLine.status }}</pre>
+        </div>
+      </div>
+    </six-alert>
+  </ng-container>
+  <ng-container>
+    <six-alert *ngIf="statusLine.statusIndicator === 'DANGER'" open type="danger">
+      <div class="flex gap-3 items-center text-red-500">
+        <six-icon class="text-4xl">warning_amber</six-icon>
+        <div>
+          Major Outage
+          <pre class="text-lg">{{ statusLine.status }}</pre>
+        </div>
+      </div>
+    </six-alert>
+  </ng-container>
+</div>
