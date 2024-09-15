@@ -62,7 +62,7 @@ insertData() {
     do
         for p in $(seq $FROM_PARTICIPANT $TO_PARTICIPANT);
         do
-            insertParticipant
+            insertParticipant $FROM_DAY $TO_DAY $FROM_HOUR $TO_HOUR $SUCCESS_COUNT $ERROR_COUNT
         done
     done
 }
