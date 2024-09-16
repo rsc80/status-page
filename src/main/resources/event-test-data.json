@@ -1,7 +1,7 @@
 [
   {
     "id": "I-1",
-    "participant": "bLink",
+    "participant": "Demo Service",
     "eventType": "INCIDENT",
     "eventStatus": "ONGOING",
     "title": "SIX Gateway Outage",
@@ -17,7 +17,7 @@
   },
   {
     "id": "I-2",
-    "participant": "bLink",
+    "participant": "Demo Service",
     "eventType": "INCIDENT",
     "eventStatus": "FINISHED",
     "title": "SIX Gateway Outage",
@@ -33,7 +33,7 @@
   },
   {
     "id": "M-1",
-    "participant": "bLink",
+    "participant": "Demo Service",
     "eventType": "MAINTENANCE",
     "eventStatus": "SCHEDULED",
     "title": "SIX Database Patch",
@@ -53,7 +53,7 @@
   },
   {
     "id": "M-2",
-    "participant": "bLink",
+    "participant": "Demo Service",
     "eventType": "MAINTENANCE",
     "eventStatus": "FINISHED",
     "title": "SIX Database Patch",

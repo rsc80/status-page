@@ -1,6 +1,6 @@
 {
   "id": "M-128737",
-  "participant": "bLink",
+  "participant": "Demo Service",
   "eventType": "MAINTENANCE",
   "eventStatus": "ONGOING",
   "title": "SIX Database Patch",
