@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {DatePipe, NgForOf, NgIf} from "@angular/common";
+import {DatePipe, NgClass, NgForOf, NgIf} from "@angular/common";
 import {StatusBubbleComponent} from "../status-bubble/status-bubble.component";
 
 import {StatusItem, StatusRow} from "../model";
@@ -15,7 +15,8 @@ import {StatusLineComponent} from "./status-line/status-line.component";
     DatePipe,
     UiLibraryAngularModule,
     NgIf,
-    StatusLineComponent
+    StatusLineComponent,
+    NgClass
   ],
   templateUrl: './status-row.component.html',
   styleUrl: './status-row.component.scss',
